@@ -10,27 +10,31 @@
 // var sum1 = a + b;
 // console.log(sum1);
 
-// // 2nd student
+// // // 2nd student
 // var a = 15,
 //   b = 15;
 // var sum2 = a + b;
 // console.log(sum2);
 
-// // 3rd student
+// // // 3rd student
 // var a = 55,
 //   b = 15;
 // var sum3 = a + b;
 // console.log(sum3);
 
-// lets make a reusable code
+// // lets make a reusable code
+
+// console.log(sum(5, 5));
+// console.log(sum(15, 50));
+// console.log(sum(25, 750));
 
 // function sum(a, b) {
 //   return a + b;
 // }
 
-// console.log(sum(5, 5));
-// console.log(sum(15, 50));
-// console.log(sum(25, 750));
+// (function a() {
+//   console.log("This is value");
+// })(); //auto invoked function
 
 //* ===============================
 //* Function Declaration:
@@ -40,7 +44,7 @@
 //? This step defines the function and specifies what code should be executed when the function is called.
 
 // function greet() {
-//   console.log("Hello Guys, Welcome to Thapa Technical JS Course ");
+//   console.log("Hello Guys, Welcome to technical JS Course ");
 // }
 
 //* =================================================
@@ -59,6 +63,9 @@
 //todo Tips "1st declare the function & then call it" In JavaScript, it's a good practice to declare (define) your functions before you call them. This ensures that the function is available for use when you try to call it.
 
 // Function definition
+// function sum(a, b) {
+//   console.log(a + b);
+// }
 // function sum() {
 //   var a = 15,
 //     b = 10;
@@ -66,8 +73,17 @@
 // }
 
 // // Calling the function
-// sum();
-// sum();
+// sum(5, 6);
+// sum(); // function overloading not works in jabascript
+
+// function sum(a = 15, b = 10) {
+//   console.log(a + b);
+// }
+
+// sum(5); // Output: 15
+// sum(5,6); // Output: 11
+// sum();     // Output: 25
+
 //* ==============================
 //* Function Parameter:
 //* ==============================
@@ -90,9 +106,9 @@
 
 //! Practice Time
 //? Let's say we want to greet students with one same line
-//! Write a JavaScript program that defines a function called greet to welcome individuals to the Thapa Technical JS Course. The function should take a name parameter and output the message "Hello [name], Welcome to Thapa Technical JS Course". Call the function twice, once with the argument "vinod" and once with the argument "ram".
+//! Write a JavaScript program that defines a function called greet to welcome individuals to the technical JS Course. The function should take a name parameter and output the message "Hello [name], Welcome to technical JS Course". Call the function twice, once with the argument "vinod" and once with the argument "ram".
 // function greet(name) {
-//   console.log("Hello " + name + ", Welcome to Thapa Technical JS Course");
+//   console.log("Hello " + name + ", Welcome to technical JS Course");
 // }
 
 // greet("ram");
@@ -111,11 +127,19 @@
 //* ==============================
 //? A function expression is a way to define a function as part of an expression. It can be either named or anonymous. If it's named, it becomes a named function expression.
 
-// var result = function sum(a, b) {
+// var result = function sum(a, b = 4) {
 //   console.log(a + b);
 // };
+// var a = function sum() {
+//   console.log("This is being called");
+// };
+// var b = () => {
+//   console.log("I am a game function");
+// };
 
-// result(10, 15);
+// result(10, 5); // Output: 15
+// a(); // Output: "This is being called"
+// b();
 
 //* ==============================
 //*  Anonymous Function
@@ -139,13 +163,13 @@
 //! Example 1: Returning a Sum of two number
 
 // function sum(a, b) {
-//   //   console.log(a + b);
+//   // console.log(a + b);
 //   return a + b;
-//   console.log("hello I am function");
+//   console.log("hello I am function"); // before reaching here program return so thsi is not gonig to print
 // }
 
 // var result = sum(5, 5);
-// // console.log(result);
+// console.log(result);
 
 // console.log("the sum of two number is " + result);
 
@@ -160,13 +184,15 @@
 
 // Syntax
 // (function () {
-//   // code to be executed
+//   console.log("Hello World!");
 // })();
 
+// a = 5;
+// b = 40;
 // var result = (function (a, b) {
 //   console.log(a + b);
 //   return a + b;
-// })(5, 10);
+// })(a, b);
 
 // console.log("the sum of two number is " + result);
 
@@ -204,7 +230,7 @@
 //       }
 
 //     default:
-//       return "no operator found";
+ //       return "no operator found";
 //   }
 // };
 
@@ -215,34 +241,33 @@
 //! Reverse a String:
 //! Write a function to reverse a given string without using built-in reverse methods.
 
-const isReverse = (str) => {
-    let reverse = "";
-    for (let char = str.length - 1; char >= 0; char--) {
-      reverse = reverse + str[char];
-    }
-    return reverse;
-  };
-  
-  console.log(isReverse("vinod thapa"));
-  
-  //! Palindrome Check:
-  //! Create a function to determine if a given string is a palindrome (reads the same backward as forward).
-  
-  // // isi     isi
-  // radar
-  // level
-  const isPalindrome = (str) => {
-    let reverse = "";
-    for (let char = str.length - 1; char >= 0; char--) {
-      reverse = reverse + str[char];
-    }
-    //   if (str === reverse) {
-    //     return true;
-    //   } else {
-    //     return false;
-    //   }
-  
-    return str === reverse ? true : false;
-  };
-  
-  console.log(isPalindrome("level"));
+// const isReverse = (str) => {
+//   let reverse = "";
+//   for (let char = str.length - 1; char >= 0; char--) {
+//     reverse = reverse + str[char];
+//   }
+//   return reverse;
+// };
+// console.log(isReverse("vinod thapa"));
+
+//! Palindrome Check:
+//! Create a function to determine if a given string is a palindrome (reads the same backward as forward).
+
+// // isi     isi
+// radar
+// level
+// const isPalindrome = (str) => {
+//   let reverse = "";
+//   for (let char = str.length - 1; char >= 0; char--) {
+//     reverse = reverse + str[char];
+// }
+//   if (str === reverse) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+
+//   return str === reverse ? true : false;
+// };
+
+// console.log(isPalindrome("level"));
