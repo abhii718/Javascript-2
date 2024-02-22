@@ -1,7 +1,7 @@
 //* ===============================
 //* Conditional statement Section
 //* ===============================
-
+// console.log("0")
 //* ===============================
 //* If Statement
 //* ===============================
@@ -23,15 +23,8 @@
 //   console.log("tv dekhte hai yr");
 // }
 
-//? We can also use an else if clause to check additional conditions:
+// ? We can also use an else if clause to check additional conditions:
 // var temperature = 15;
-// if (temperature >= 30) {
-//   console.log("lets go to beach");
-// } else if (temperature >= 20 && temperature < 30) {
-//   console.log("tv dekhte hai yr");
-// } else {
-//   console.log("kambhal oodo so jawo");
-// }
 
 //* ===============================
 //* Interview Question
@@ -62,49 +55,49 @@
 //   }
 // } else {
 //   console.log("You are not eligible to vote (Younger)");
-// }
+//
 
 //* ===============================
 //* Interview Questions
 //* ===============================
 //! 1: Write a program to check if a number is even or odd.
-var num = "7";
-if (num % 2 === 0) {
-  console.log("Num is even");
-} else {
-  console.log("Num is odd");
-}
+// var num = "7";
+// if (num % 2 === 0) {
+//   console.log("Num is even");
+// } else {
+//   console.log("Num is odd");
+// }
 
 //! 2: Write a program to check if a number is prime.
 //todo Prime numbers are numbers that have only 2 factors: 1 and themselves.
 //? All prime numbers greater than 2 are odd.
 //? However, not all odd numbers are prime.
 
-var num = 13;
-var isPrime = true;
+// var num = 13;
+// var isPrime = true;
 
-for (var i = 2; i < num; i++) {
-  if (num % i === 0) {
-    isPrime = false;
-    break;
-  }
-}
+// for (var i = 2; i < num; i++) {
+//   if (num % i === 0) {
+//     isPrime = false;
+//     break;
+//   }
+// }
 
-if (isPrime) {
-  console.log("Num is prime");
-} else {
-  console.log("Num is not prime");
-}
+// if (isPrime) {
+//   console.log("Num is prime");
+// } else {
+//   console.log("Num is not prime");
+// }
 
-//! 3: Write a program to check if a number is positive, negative, or zero.
-var num = -10;
-if (num === 0) {
-  console.log("NUm is zero");
-} else if (num > 0) {
-  console.log("NUm is positive ");
-} else {
-  console.log("NUm is negative ");
-}
+// //! 3: Write a program to check if a number is positive, negative, or zero.
+// var num = -10;
+// if (num === 0) {
+//   console.log("NUm is zero");
+// } else if (num > 0) {
+//   console.log("NUm is positive ");
+// } else {
+//   console.log("NUm is negative ");
+// }
 
 //* ===============================
 //* Switch Statement
@@ -359,7 +352,7 @@ if (num === 0) {
 // for (var i = 1; i <= 5; i++) {
 //   var pattern = "";
 //   for (var j = 1; j <= i; j++) {
-//     pattern = pattern + " *";
+//   pattern = pattern + " 8";
 //   }
 //   console.log(pattern);
 // }
