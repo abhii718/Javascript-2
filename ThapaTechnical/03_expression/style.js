@@ -1,15 +1,15 @@
 //* ===================================
 //*  EXPRESSIONS AND OPERATORS Section
 //* ====================================
-
+console.log("EXPRESSIONS AND OPERATORS");
 //? 1st we will see what is expression means and also what is operand and operator in any expression?
 
 //* Types of Operators in JS
-// Assignment operators
+// Assignment operators // we use for assign the value in it
 // Arithmetic operators
 // In arithmetic we increment and decrement operator.
 // Comparison operators
-// Logical operators
+// Logical operators 
 // String operators
 // Conditional (ternary) operator
 
@@ -79,8 +79,9 @@
 //* ====================================
 
 //! var result = 0.1 + 0.2 ❓ 🤔💭
-// var result = 0.1 + 0.2;
-// console.log(result.toFixed(2));
+// var result = 0.2 + 0.1 ;
+// console.log(result)
+// console.log(result.toFixed(5));
 // when working with floating-point numbers in JavaScript, consider using methods like toFixed() when precise decimal representation is necessary.
 
 // const result = 55 * "hello" ❓
@@ -112,6 +113,7 @@
 
 //? Equal (==): Checks if two values are equal, performing type coercion if necessary.
 // console.log(5 == "5");
+
 
 //? Strict Equal (===):
 // Checks if two values are equal without performing type coercion.
@@ -197,8 +199,9 @@
 
 //! How would the result change if hasDriverLicense was set to false❓
 
+
 //* ===================================
-//* 6: Unary operator
+//* 7: Unary operator
 //* ====================================
 //? Unary operators in JavaScript are operators that work with only one operand. They perform various operations such as negation, incrementing, decrementing, type conversion, and more.
 
@@ -246,8 +249,14 @@
 //*  Combined Interview Questions
 //* ====================================
 
-// console.log(typeof ("5" - 3));
+// console.log ("5" - 3);
 
 // console.log(2 < 12 < 5);
+ // true because  it checks if 2 is less than 12 which returns a boolean value of true or false that means if we get true then true == 1 we know right? so that why 1 < 5? true
 
 // console.log("20" + 10 + 10);
+// Output : "201010"
+// console.log("20" + 10 - 10);
+// Output : "2000"
+// console.log("20" - 10 + 10);
+// Ouput : "20"
