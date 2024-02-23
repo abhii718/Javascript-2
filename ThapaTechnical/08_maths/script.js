@@ -26,14 +26,18 @@
 
 //? Math.ceil(x): Returns the value of x rounded up to its nearest integer:
 // const ceilValue = Math.ceil(3.7);
+// const ceilValue = Math.ceil(-3.7);
 // console.log(ceilValue);
 
 //? Math.floor(x): Returns the value of x rounded down to its nearest integer.
 // const floorValue = Math.floor(3.7);
+// const floorValue = Math.floor(-3.7);
 // console.log(floorValue);
 
 //? Math.trunc(x): Returns the integer part of x:
 // const truncValue = Math.trunc(3.7);
+// const truncValue = Math.trunc(-3.7);
+
 // console.log(truncValue);
 
 //todo Math.trunc() and Math.sign() were added to JavaScript 2015 - ES6.
@@ -76,4 +80,14 @@
 //! Generate Random number
 //? Math.random(): Math.random() returns a random number between 0 (inclusive), and 1 (exclusive)
 
-console.log((Math.random() * 100).toFixed(3));
+// console.log(Math.floor(Math.random() * 100));
+// (Math.floor(Math.random() * 100))
+// let count = 0;
+// let randomNumber;
+// do {
+//   randomNumber = Math.floor(Math.random() * 100);
+//   console.log("Random Number:", randomNumber);
+//   count++;
+// } while (randomNumber !== 50);
+
+// console.log("Total Iterations:", count);
