@@ -26,11 +26,7 @@
 // \"	    "	        Double quote
 // \\	    \	        Backslash
 
-// let text = "My name is " Thapa Technical " & I am a Full Stack Developer. ";
-// let text =
-//   "My name is ' Thapa Technical ' & \\ I am a \"Full Stack \" Developer. ";
-// // let text = 'My name is " Thapa Technical " & I am a Full Stack Developer. ';
-
+// let text = "My name is ' Thapa Technical ' & \\ I am a \"Full Stack \" Developer. ";
 // console.log(text);
 
 //* =========================================
@@ -45,20 +41,20 @@
 
 // let text = "Vinod Thapa";
 // console.log(text.indexOf("thapa"));
-// The indexOf() method is case sensitive.
+// // The indexOf() method is case sensitive.
 // console.log(text.indexOf("Thapa"));
 
 // let strArr = Array.from(text);
-// // console.log(strArr);
-// let strMap = strArr.map((curElem, index) => `${curElem} - ${index}`);
+// console.log(strArr);
+// let strMap = strArr.map((curElem, index) => `${curElem} => ${index}`);
 // console.log(strMap);
-
+// console.log(text.indexOf("T"))
 //? b: lastIndexOf() : The lastIndexOf() method returns the index of the last occurrence of a specified text in a string:
 // syntax
 // lastIndexOf(searchString)
 // lastIndexOf(searchString, position)
 
-// let text = "Hello JavaScript, welcome to our world best JavaScript course";
+// let text = "Hello JavaScript, welcome to our world best JavaScript   course";
 // let index = text.indexOf("JavaScript");
 // let index = text.lastIndexOf("JavaScript");
 // let index = text.lastIndexOf("JavaScript", 40);
@@ -69,6 +65,7 @@
 
 // let text = "Hello JavaScript, welcome to our world best JavaScript course";
 // let result = text.search(/Javascript/i);
+// i means search without mathing case sensitivity
 // console.log(result);
 
 //*👉 Important Tips
@@ -82,13 +79,16 @@
 // let result = text.match("Javascript");
 // let result = text.match("JavaScript");
 //todo here the js converts the normal text into regular expression text.match(/JavaScript/); without the g flag
-// let result = text.match(/Javascript/gi);
+// let result = text.match(/JavaScript/);
+// let result = text.match(/JavaScript/g);
+// let result1 = text.match(/Javascript/gi);
 
 // console.log(result);
+// console.log(result1);
 
 //? matchAll() : Returns an iterator of all matches, providing detailed information about each match. Returns an empty iterator if no match is found.
 // let text = "Hello JavaScript, welcome to our world best JavaScript course";
-// let matchResult = text.matchAll("javascript");
+// // let matchResult = text.matchAll("javascript");
 // let matchResult = text.matchAll("JavaScript");
 //todo  here the js converts the normal text into regular expression text.match(/JavaScript/g); also adds the g flag at the end
 
@@ -109,7 +109,9 @@
 //? includes(): Returns true if the string contains the specified value, and false otherwise.
 // let text = "Hello JavaScript, welcome to our world best JavaScript course";
 // let includeResult = text.includes(/java/i);
+// let includeResult = text.includes("Java");
 // let includeResult = text.includes("J");
+// this feature came in ECMAScript 6
 // console.log(includeResult);
 
 // Note: includes() is case sensitive. includes() is an ES6 feature.
@@ -162,7 +164,8 @@
 //* substring() is similar to slice(). The difference is that start and end values less than 0 are treated as 0 in substring().
 
 // let text = "Hello JavaScript, welcome to our world best JavaScript course";
-// let result = text.slice(-6);
+// let result = text.slice(-6); // It work backward tooo
+// console.log(text.substring(-6));
 // console.log(result);
 
 //! Homework
@@ -173,7 +176,7 @@
 // console.log(result);
 
 //! similarities
-//todo  In both the slice() and substring() methods, the end parameter indicates the ending index up to which the extraction occurs, but the character at the end index is excluded from the extracted substring.
+//todo  In both the slice() and substring() methods, the end parameter indicates the ending index up to which the extraction occurs, but  the character at the end index is excluded from the extracted substring.
 
 //* =========================================
 //* Interview Question
@@ -212,9 +215,11 @@
 // console.log(result);
 
 //todo ES2022 introduced the string method at():
-//? The at() method returns the character at a specified index (position) in a string. The at() method returns the same as carAt().
+//? The at() method returns the character at a specified index (position) in a string. The at() method returns the same as charAt().
 // let text = "Hello JavaScript, welcome to our world best JavaScript course";
-// let result = text.at(-6);
+// let result = text.at(-9);
+// let result = text.at(6);
+
 // console.log(result);
 
 //todo Note
@@ -255,8 +260,10 @@
 // console.log(trimStr.length);
 
 //? split: Splits the string into an array of substrings based on a specified delimiter.
-// const str = "apple,orange,banana";
-// let strArr = str.split(",").reverse().join();
+const str = "apple,orange,banana";
+// let strArr = str.split(","); // to make arrat sepretes by ","
+// let strArr = str.split(",").reverse(); //to  reverse the order of arrray elements
+// let strArr = str.split(",").reverse().join(); // to make string
 // console.log(strArr);
 
 //* =========================================
@@ -269,7 +276,7 @@
 // console.log("z".charCodeAt(0));
 
 // for (let char = 97; char <= 122; char++) {
-//   console.log(String.fromCharCode(char));
+//   console.log(String.fromCharCode(char) , char );
 // }
 
 //! 2: Write a function to count the number of vowels in a string?
@@ -286,7 +293,7 @@
 //   }
 //   return count;
 // };
-//   console.log(checkAllVowelPresentOrNot("my name u is vinod @  thapa"));
+// console.log(checkAllVowelPresentOrNot("my name u is vinod @  thapa"));
 // console.log(countVowels("Hello a i o u world"));
 
 //! 3: Write a function to check if all the vowels presents in a string or not?
@@ -307,20 +314,20 @@
 
 //! 4: Write a JavaScript function to check if the given sting is Pangram or not?
 
-const pangramChecker = (str) => {
-    let inputArr = str.toLowerCase().split("");
-    // console.log(inputArr);
-    // // console.log("z".charCodeAt());
-    const values = inputArr.filter(
-      (curElem) =>
-        curElem.charCodeAt() >= "a".charCodeAt() &&
-        curElem.charCodeAt() <= "z".charCodeAt()
-    );
-    // console.log(values);
-  
-    return new Set(values).size === 26;
-  
-    // return [...new Set(values)].length === 26;
-  };
-  
-  console.log(pangramChecker("The quick  @ brown fox jumps ove the lazy dog"));
+// const pangramChecker = (str) => {
+//     let inputArr = str.toLowerCase().split("");
+//     onsole.log(inputArr);
+//     console.log("z".charCodeAt());
+//     const values = inputArr.filter(
+//       (curElem) =>
+//         curElem.charCodeAt() >= "a".charCodeAt() &&
+//         curElem.charCodeAt() <= "z".charCodeAt()
+//     );
+// console.log(values);
+
+// return new Set(values).size === 26;
+
+// return [...new Set(values)].length === 26;
+//   };
+
+//   console.log(pangramChecker("The quick  brown fox jumps ove the lazy dog"));
