@@ -70,41 +70,50 @@
 
 // ? 3: forEach Method
 //* The arr.forEach() method calls the provided function once for each element of the array. The provided function may perform any kind of operation on the elements of the given array.
+//* The forEach() method executes a provided function once per array element.
 
-// const myForEachArr = fruits.forEach((curElem, index, arr) => {
+// }
+// const myForEachArr = fruits.forEach((curElem, index, fruits) => {
 //   return `${curElem} ${index}`;
-//   //   console.log(arr);
+//   console.log(arr);
 // });
 // console.log(myForEachArr);
+
+// let fruits = ["apple", "orange", "mango", "grapes", "banana"];
+// fruits.forEach((e)=>{
+//   console.log(e);
+// })
 
 // ? 4: map function
 //* map() creates a new array from calling a function for every array element. map() does not change the original array.
 
 // const myMapArr = fruits.map((curElem, index, arr) => {
-//   return ` my fav fruit is ${curElem} `;
-//   //   console.log(arr);
+//   return `${curElem} ${index + 1}`;
+// console.log(arr);
 // });
-
 // console.log(myMapArr);
+
 // console.log(fruits);
 
 //todo Practice Time
 //! write a program to Multiply each element with 2
 // const numbers = [1, 2, 3, 4, 5];
-// // forEach -  Performs an action on each element
-// // map -  Creates a new array with transformed elements
+// forEach -  Performs an action on each element
+// map -  Creates a new array with transformed elements
 
-// numbers.forEach((curElem) => {
-//   console.log(curElem * 2);
-//   //   Performs an action on each element
+//! if you want to perform a task on array and dont want to make new array then go with forEach
+// for each do not return anything from it
+// const doubleValue = numbers.forEach((e) => {
+//   console.log(e * 2);
 // });
 
-// const doubleValue = numbers.map((curElem) => {
-//   return curElem * 2;
-//   //   Creates a new array with transformed elements
+//! if you want new array from transform array then go with map
+// const doubleValue = numbers.map((e) => {
+// return (e * 2);
+// console.log(e * 2);
 // });
 
-// console.log(doubleValue);
+// console.log(typeof doubleValue);
 
 //* Key Differences
 //! Return Value:
@@ -155,7 +164,8 @@
 // fruits.splice(1, 1, "grapes");
 // console.log(fruits);
 
-// //! what if you want to add the element at the end
+//! what if you want to add the element at the end
+// zero means nothing delete , -1 means from back
 // fruits.splice(-1, 0, "grapes");
 // fruits.splice(1, 0, "grapes");
 // console.log(fruits);
@@ -172,7 +182,8 @@
 // syntax
 // indexOf(searchElement);
 // indexOf(searchElement, fromIndex);
-// console.log(numbers.indexOf(4, 5));
+// console.log(numbers.indexOf(4, 6));//it meand we want to start searching from 5 to thats why its not  //-1 return
+// console.log(numbers.indexOf(4));
 
 //? 2: lastIndexOf Method: The lastIndexOf() method of Array instances returns the last index at which a given element can be found in the array, or -1 if it is not present. The array is searched backwards, starting at fromIndex.
 // const numbers = [1, 2, 3, 6, 4, 5, 6, 7, 8, 9];
@@ -180,8 +191,10 @@
 // console.log(result);
 // const result1 = numbers.lastIndexOf(6);
 // console.log(result1);
-// const result = numbers.indexOf(6, 5);
-// console.log(result);
+// const result3 = numbers.indexOf(6, 4 );
+// //  it will seach from 4 th position onward
+// const result3 = numbers.indexOf(6, 2 );
+// console.log(result3);
 
 //? 3: The includes method checks whether an array includes a certain element, returning true or false.
 // Syntax
@@ -191,28 +204,42 @@
 // const numbers = [1, 2, 3, 6, 4, 5, 6, 7, 8, 9];
 // const result = numbers.includes(5);
 // console.log(result);
+// It check weather number is present or not
 
 //todo Challenge time
 //? 1: Add Dec at the end of an array?
-//? 2: What is the return value of splice method?
-//? 3: Update march to March (update)?
-//? 4: Delete June from an array?
-
 // const months = ["Jan", "march", "April", "June", "July"];
+//* months.push("dec")
+//* console.log(months)
 
-// // 1
+//? 2: What is the return value of splice method?
+// it will return  the value which has been removed by splicing
+//? 3: Update march to March (update)?
+// months.splice(1, 1, "March");
+// console.log(months);
+
+//? 4: Delete June from an array?
+// const months = ["Jan", "March", "April", "June", "July"];
+// const indexToRemove = months.indexOf("June");
+// if (indexToRemove !==-1 ) {
+//   months.splice(indexToRemove, 1);
+// }
+// console.log(months);
+// This will output: ["Jan", "March", "April", "July"]
+
+// 1
 // months.splice(months.length, 0, "Dec");
-// // console.log(months);
+// console.log(months);
 
-// // 2:
-// // When used to add elements, the splice method returns an empty array ([]).
+// 2:
+// When used to add elements, the splice method returns an empty array ([]).
 
-// // 3
+// 3
 // const indexToUpdate = months.indexOf("march");
 // months.splice(indexToUpdate, 1, "March");
-// // console.log(months);
+// console.log(months);
 
-// // 4
+// 4
 // const indexToDelete = months.indexOf("June");
 // months.splice(indexToDelete, 1);
 // console.log(months);
@@ -255,12 +282,12 @@
 // console.log(result);
 
 // UseCase: In E-commerce website when we want to Remove or delete any product from addToCart page.
-//! Ex. le'ts say user wants to delete value 6.
+// //! Ex. let's say user wants to delete value 6.
 // let value = 6;
 // const numbers = [1, 2, 3, 4, 6, 5, 6, 7, 8, 9];
 
 // let updatedCart = numbers.filter((curElem) => {
-//   return curElem !== value;
+//   return curElem != value;
 // });
 
 // console.log(updatedCart);
@@ -273,19 +300,28 @@
 //   { name: "Tablet", price: 300 },
 //   { name: "Smartwatch", price: 150 },
 // ];
-// // Filter products with a price less than or equal to 500
+// Filter products with a price less than or equal to 500
 
 // const filterProducts = products.filter((curElem) => {
-//   //   console.log(curElem.price <= 500);
+//   console.log(curElem.price <= 500);
 //   return curElem.price <= 500;
 // });
 // console.log(filterProducts);
 
+// const a = products.filter((curElem) => {
+//   console.log(curElem.price <= 500);
+// return e.price;
+// });
+// console.log(a);
+
 // //! Filter unique values
 // const numbers = [1, 2, 3, 4, 6, 5, 6, 7, 8, 9];
+
 // let uniqueValues = numbers.filter((curElem, index, arr) => {
-//   //   console.log(index);
-//   //   console.log(arr.indexOf(curElem));
+// console.log(index);
+// console.log(curElem)
+//   console.log(arr)
+//   console.log(arr.indexOf(curElem));
 //   return arr.indexOf(curElem) === index;
 // });
 // console.log(uniqueValues);
@@ -300,6 +336,7 @@
 // const fruits = ["Banana", "Apple", "Orange", "Mango"];
 // const numbers = [1, 2, 4, 3, 6, 5, 6, 7, 4, 8, 9];
 
+// console.log([...new Set(numbers.sort())]);
 // console.log(numbers);
 
 //? compare callback function
@@ -344,7 +381,7 @@
 // Original array of numbers
 // const numbers = [1, 2, 3, 4, 5];
 
-//! Using map to square each number and create a new array
+// ! Using map to square each number and create a new array
 // const numbers = [1, 2, 3, 4, 5];
 
 // let result = numbers.map((curElem) => curElem * curElem);
@@ -352,10 +389,10 @@
 
 //! 1: Using the map method, write a function that takes an array of strings and returns a new array where each string is capitalized.
 // Original array of strings
-const words = ["APPLE", "banana", "cherry", "date"];
+// const words = ["APPLE", "banana", "cherry", "date"];
 
 // const result = words.map((curElem) => {
-//   return curElem.toLowerCase();
+//   return curElem.toUpperCase();
 // });
 
 // console.log(result);
@@ -363,7 +400,7 @@ const words = ["APPLE", "banana", "cherry", "date"];
 //! 2: Using the map method, write a function that takes an array of numbers and returns a new array where each number is squared, but only if it's an even number.
 
 // Original array of numbers
-const numbers = [1, 2, 3, 4, 5];
+// const numbers = [1, 2, 3, 4, 5];
 
 // const result = numbers
 //   .map((curElem) => {
@@ -391,8 +428,8 @@ const numbers = [1, 2, 3, 4, 5];
 // The reduce method in JavaScript is used to accumulate or reduce an array to a single value. It iterates over the elements of an array and applies a callback function to each element, updating an accumulator value with the result. The reduce method takes a callback function as its first argument and an optional initial value for the accumulator as the second argument.
 // syntax
 // array.reduce(function callback(accumulator, currentValue, index, array) {
-//   // Your logic here
-//   // Return the updated accumulator value
+// // Your logic here
+// // return the updated accumulator value
 // }, initialValue);
 
 // callback: A function that is called once for each element in the array.
@@ -402,10 +439,10 @@ const numbers = [1, 2, 3, 4, 5];
 // array (optional): The array reduce was called upon.
 // initialValue (optional): An initial value for the accumulator. If not provided, the first element of the array is used as the initial accumulator value.
 
-const productPrice = [100, 200, 300, 400, 500];
+// const productPrice = [100, 200, 300, 400, 500];
 
-const totalPrice = productPrice.reduce((accum, curElem) => {
-  return accum + curElem;
-}, 0);
+// const totalPrice = productPrice.reduce((accum, curElem) => {
+//   return accum + curElem;
+// }, 0);
 
-console.log(totalPrice);
+// console.log(totalPrice);
