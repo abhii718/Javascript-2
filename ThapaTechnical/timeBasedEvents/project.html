@@ -18,6 +18,52 @@
       </div>
       <div class="resetValue"></div>
     </section>
-    <script></script>
+    <script>
+      function getElement(selector) {
+        return document.querySelector(selector);
+      }
+
+      var startCount = 0;
+      let intervalId;
+      function startTimer() {
+        intervalId = setInterval(() => {
+          countDownElement.innerText = startCount++;
+        }, 1000);
+      }
+
+      function stopTimer() {
+        clearInterval(intervalId);
+      }
+
+      function resetTimer() {
+        startCount = 0;
+        countDownElement.innerText = startCount;
+        clearInterval(intervalId);
+      }
+
+      const showStopValue = () => {
+        const newPara = document.createElement("p")
+        newPara.innerText = `The stop time is ${startCount -1}`
+        resetValue.append(newPara)
+      };
+
+      const clearTimeValue= ()=>{
+        resetValue.innerText = "";
+      }
+
+      var countDownElement = getElement("#countDown");
+      var startButton = getElement(".start_btn");
+      var resetButton = getElement(".reset_btn");
+      var stopButton = getElement(".stop_btn");
+      var timeButton = getElement(".time_btn");
+      var clearButton = getElement(".clear_btn");
+      var resetValue = getElement(".resetValue");
+
+      startButton.addEventListener("click", startTimer);
+      stopButton.addEventListener("click", stopTimer);
+      resetButton.addEventListener("click", resetTimer);
+      timeButton.addEventListener("click", showStopValue);
+      clearButton.addEventListener("click", clearTimeValue);
+    </script>
   </body>
 </html>
