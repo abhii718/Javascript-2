@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Background changer</title>
+  </head>
+  <body>
+    <div>
+      <div>
+        <button class="btn1">abhii</button>
+        <button class="btn2">singh</button>
+      </div>
+      <h5>Copy your code here</h5>
+      <div class="copyCode">
+        background-image: linear-gradient(to right , #fff , #000)
+      </div>
+    </div>
+    <script>
+      let btn1 = document.getElementsByClassName("btn1");
+      let btn2 = document.getElementsByClassName("btn2");
+      let copyDiv = document.querySelector(".copyCode")
+      let rgb1 = "#fff"
+      let rgb2 = "#000"
+
+      const handlebt = () => {
+       let colors = "#";
+        let myHexaValue = "0123456789abcdef";
+        for (let i = 0; i < 6; i++) {
+          colors = colors + [Math.floor(Math.random() * 16)];
+        }
+       return colors;
+      };
+    const handleButtpm2 = () => {
+        rgb2
+    }
+    </script>
+  </body>
+</html>
