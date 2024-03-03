@@ -36,7 +36,8 @@
             apiBody.innerHTML = data.joke;
           })
           .catch((error) => {
-            console.log(error + "not found server");
+            console.log(error + "Api not found");
+            apiBody.innerHTML = `Api not found`;
           });
       };
       joke();
