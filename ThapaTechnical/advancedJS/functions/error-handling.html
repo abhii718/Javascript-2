@@ -40,11 +40,26 @@
 
     <script>
       const apiBody = document.querySelector(".api_body");
-      const apiUrl = "https://icanhazdadjoke.com/";
+      // const apiUrl = "https://jsonplaceholder.typicode.com/posts/1";
+      const apiUrl = "https://icanhazdadjoke.coms/";
 
-      // async function fetchData() {
-
-      // Add event listener to fetch a new joke when the button is clicked
+      async function joke() {
+        try {
+          const res = await fetch(apiUrl, {
+            headers: {
+              Accept: "application/json",
+            },
+          });
+          const data = await res.json();
+          console.log(data.joke);
+          apiBody.innerHTML = data.joke;
+        } catch (error) {
+          console.log("Api not found", error);
+          apiBody.innerHTML = "Failed to fetch joke. Please try again later.";
+        }
+      }
+      joke();
+      document.getElementById("fetchJoke").addEventListener("click", joke);
     </script>
   </body>
 </html>
