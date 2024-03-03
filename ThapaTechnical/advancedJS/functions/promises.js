@@ -45,6 +45,22 @@
 //   });
 // }
 
+// const pr = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve("resolved this functions");
+//   }, 3000);
+// }).then((res) => {
+//   console.log("res");
+// })
+//   .catch((err) => {
+//     console.log("err");
+//   })
+//   .finally(() => {
+//     console.log(
+//       "This is the finally state and doesn't depends on resolve  or reject"
+//     );
+//   });
+
 // 1: By default promise has the pending state
 // 2: the moment we use setTimeout, we need to handle promises, we can do using then and catch
 
@@ -94,28 +110,28 @@
 //     console.log("Enrollment process completed.");
 //   });
 
-const promise1 = new Promise((resolve, reject) =>
-  setTimeout(() => resolve("First"), 2000)
-);
-
-// const promise2 = new Promise((resolve) =>
-//   setTimeout(() => resolve("Second"), 5000)
+// const promise1 = new Promise((resolve, reject) =>
+//   setTimeout(() => resolve("First"), 5000)
 // );
 
-const promise2 = new Promise((resolve, reject) =>
-  setTimeout(() => reject("Failed"), 100)
-);
+// const promise2 = new Promise((resolve) =>
+//   setTimeout(() => resolve("Second"), 2000)
+// );
 
-const promise3 = new Promise((resolve) =>
-  setTimeout(() => resolve("Third"), 1000)
-);
+// const promise2 = new Promise((resolve, reject) =>
+//   setTimeout(() => reject("Failed"), 100)
+// );
 
-// Promise.all([promise1, promise3, promise2])
+// const promise3 = new Promise((resolve , reject) =>
+//   setTimeout(() => resolve("Third"), 3000)
+// );
+
+// Promise.all([promise1, promise2, promise3])
 //   .then((values) => {
 //     console.log(values);
 //   })
 //   .catch((error) => {
-//     console.error(error);
+//     console.error("error");
 //   });
 
 // Promise.allSettled([promise1, promise2, promise3])
@@ -126,10 +142,10 @@ const promise3 = new Promise((resolve) =>
 //     console.error(error);
 //   });
 
-Promise.race([promise1, promise2, promise3])
-  .then((values) => {
-    console.log(values);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+// Promise.race([promise1, promise2, promise3])
+//   .then((values) => {
+//     console.log(values);
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//   });
