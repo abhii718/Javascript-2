@@ -10,7 +10,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name= "viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Delegation Example</title>
     <link rel="stylesheet" href="style.css" />
     <style>
@@ -60,6 +60,16 @@
     </ul>
     <p id="listValue"></p>
 
-    <script></script>
+    <script>
+      const funct = (event) => {
+        console.log(event.target);
+        document.getElementById(
+          "listValue"
+        ).innerHTML = `You clicked on ${event.target.innerText}  <h3 style="text-align:center">${event.target.innerText}</h3>`;
+      };
+      // const listValue = getElementById("listValue");
+
+      document.getElementById("myList").addEventListener("click", funct);
+    </script>
   </body>
 </html>
