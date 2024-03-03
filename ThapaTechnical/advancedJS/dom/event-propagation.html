@@ -88,6 +88,50 @@ Handlers registered for the bubbling phase are executed. -->
         </div>
       </div>
     </section>
-    <script></script>
+    <script>
+      const callOuter = (event) => {
+        console.table([
+          {
+            Description: "I am the outer one",
+            Target: event.target,
+            CurrentTarget: event.currentTarget,
+          },
+        ]);
+      };
+      const callMiddle = (event) => {
+        console.table([
+          {
+            Description: "I am the Middle one",
+            Target: event.target,
+            CurrentTarget: event.currentTarget,
+          },
+        ]);
+        // event.stopPropagation();
+      };
+      const callInner = (event) => {
+        console.table([
+          {
+            Description: "I am the Inner one",
+            Target: event.target,
+            CurrentTarget: event.currentTarget,
+          },
+        ]);
+        // event.stopPropagation();
+      };
+
+      const outer = document.getElementById("outer");
+      const middle = document.getElementById("middle");
+      const inner = document.getElementById("inner");
+
+      // capturing phases
+      outer.addEventListener("click", callOuter, true);
+      middle.addEventListener("click", callMiddle, true);
+      inner.addEventListener("click", callInner, true);
+
+      // bubbling phases
+      outer.addEventListener("click", callOuter);
+      middle.addEventListener("click", callMiddle);
+      inner.addEventListener("click", callInner);
+    </script>
   </body>
 </html>
