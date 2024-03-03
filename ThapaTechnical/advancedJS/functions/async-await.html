@@ -21,10 +21,23 @@
     </div>
 
     <script>
+    
       const apiBody = document.querySelector(".api_body");
-      const apiUrl = "https://icanhazdadjoke.coms/";
+      // const apiUrl = "https://jsonplaceholder.typicode.com/posts/1";
+      const apiUrl = "https://icanhazdadjoke.com/";
 
-      // Add event listener to fetch a new joke when the button is clicked
+      async function joke() {
+        const res = await fetch(apiUrl, {
+          headers: {
+            Accept: "application/json",
+          },
+        });
+        const data = await res.json();
+        console.log(data.joke);
+        apiBody.innerHTML = data.joke;
+      }
+      joke();
+      document.getElementById("fetchJoke").addEventListener("click", joke);
     </script>
   </body>
 </html>
