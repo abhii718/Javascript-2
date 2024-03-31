@@ -5,6 +5,7 @@
 JavaScript is a high-level, interpreted programming language primarily used for creating interactive and dynamic content on websites. It enables functionalities such as user interactions, form validations, animations, and dynamic content updates without page reloads.
 
 ## Key Features:
+
 - Interactivity: Allows dynamic interaction with website elements.
 - Client-Side Execution: Runs directly in the web browser for quick feedback to user actions.
 - Versatility: Used for server-side programming (Node.js), mobile app development (React Native), and desktop applications (Electron).
@@ -12,19 +13,20 @@ JavaScript is a high-level, interpreted programming language primarily used for 
 - Cross-Platform Compatibility: Supported by major web browsers and across different operating systems.
 
 ## Data Types:
+
 - Primitive Data Types: Numbers, strings, booleans, null, and undefined.
 - Complex Data Types: Objects and functions.
 
 ## Operators:
+
 - `==` performs type coercion, while `===` is the strict equality operator.
   - Example: `0 == false` is true, but `0 === false` is false.
 
 ## Null vs Undefined:
+
 - null represents intentional absence of value.
 - undefined indicates lack of defined value.
   - null is a primitive value, while undefined is a type with a single value.
-
-
 
 ## Closure in JavaScript:
 
@@ -86,6 +88,8 @@ In JavaScript, the `this` keyword is a special identifier that refers to the exe
 
 When a function is invoked as a method of an object, `this` refers to the object itself. This allows methods to access and manipulate the properties of the object they are called on.
 
+#### Example
+
 ```javascript
 const person = {
   name: "John",
@@ -98,6 +102,8 @@ person.greet(); // Output: Hello, John
 ```
 
 ## ProtoTypes
+
+#### Example
 
 ```javascript
 //prototypes
@@ -141,6 +147,8 @@ In JavaScript, `let`, `const`, and `var` are used to declare variables, but they
 
 ### `var`, `let` `const` Example:
 
+#### Example
+
 ```javascript
 var x = 10;
 {
@@ -160,6 +168,8 @@ console.log(z); // Output: 10
 ```
 
 ## Function declaration vs function expression:
+
+#### Example
 
 ```javascript
 // Function expression assigned to a const variable
@@ -182,6 +192,8 @@ sayBye(); // Output: Goodbye!
 ```
 
 ## Declaring Functions in JavaScript and Different Ways to Define a Function
+
+#### Example
 
 ```js
 // Function Declaration:
@@ -221,4 +233,210 @@ const myObject = {
     // Method body
   },
 };
+```
+
+## Callback Functions
+
+- A callback function is a function passed as an argument to another function, which is then invoked inside the outer function to complete some kind of action or operation. Callback functions are commonly used in asynchronous programming to handle tasks that depend on the completion of other tasks.
+
+#### Example
+
+```js
+// Example of a function with a callback
+function doSomethingAsync(callback) {
+  setTimeout(function () {
+    console.log("Task completed asynchronously");
+    // Invoke the callback function
+    callback();
+  }, 2000);
+}
+
+// Define the callback function
+function callbackFunction() {
+  console.log("Callback function executed");
+}
+
+// Call the function with the callback
+doSomethingAsync(callbackFunction);
+```
+
+## Error Handling in JavaScript
+
+- In JavaScript, errors can be handled using try-catch blocks, which allow you to catch and handle exceptions that occur within a block of code.
+
+#### Example
+
+```js
+try {
+  // Code that might throw an error
+  throw new Error("This is an error message");
+} catch (error) {
+  // Handle the error
+  console.error("An error occurred:", error.message);
+} finally {
+  // Optional: Code that will always execute, regardless of whether an error occurred or not
+  console.log("Finally block executed");
+}
+```
+
+## Event Delegation in JavaScript
+
+- Event delegation is a technique where a single event listener is attached to a parent element to handle events for all of its children. This is useful for dynamically added elements or when you have many elements with the same event handling logic.
+
+#### HTML
+
+```html
+<ul id="myList">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+```
+
+#### JAVASCIPT
+
+```js
+document.getElementById("myList").addEventListener("click", function (event) {
+  console.log(event.target.tagName); //'LI'
+  console.log(event.target.textContent); //Item .
+  if (event.target.tagName === "LI") {
+    console.log("Clicked on:", event.target.textContent);
+  }
+});
+```
+
+## Promises in JavaScript
+
+- Promises are objects representing the eventual completion or failure of an asynchronous operation. They provide a cleaner alternative to callback-based asynchronous code, making it easier to manage asynchronous operations and handle their results.
+
+#### Example
+
+```js
+fetch("https://jsonplaceholder.typicode.com/users")
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((users) => {
+    const userDataDiv = document.getElementById("userData");
+    users.forEach((user) => {
+      userDataDiv.innerHTML += `<p>User name: ${user.name}</p>`;
+    });
+    // Process the fetched data here
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });
+```
+
+## Difference Between Asynchronous and Synchronous Programming
+
+#### Synchronous Programming:
+
+- Tasks are executed one after the other, in sequence.
+- Each task waits for the previous one to complete.
+- Blocking behavior: If a task takes a long time, it blocks subsequent tasks.
+- Example: Traditional procedural programming languages like C.
+
+#### Asynchronous Programming:
+
+- Tasks can execute concurrently or independently of each other.
+- Tasks can start and complete independently, without waiting for others to finish.
+- Non-blocking behavior: If a task takes a long time, the program can continue executing other tasks.
+- Example: JavaScript, where asynchronous operations like fetching data or reading files are common.
+
+## Creating and Manipulating Arrays in JavaScript
+
+### Creating Arrays:
+
+```javascript
+const array1 = [1, 2, 3]; // Array literal
+const array2 = new Array(4, 5, 6); // Array constructor
+```
+
+```js
+const fruits = ["apple", "banana", "orange"];
+
+// Add elements
+fruits.push("grape");
+
+// Remove elements
+fruits.pop();
+fruits.shift();
+
+// Modify elements
+fruits[1] = "pear";
+
+console.log(fruits); // Output: ['banana', 'pear']
+```
+
+## Array
+
+- `length` property: The number of elements in an array. Read only.
+- `indexOf()` method: Returns the first index at which a given element appears in an array. It returns -1 if the element is not
+- `lastIndexOf()` method: Returns the last index at which a given element appears in an array.
+
+- `includes()` method: Determines whether an array contains a specified element.
+- `concat()` method: Combines two or more arrays.
+- `join()` method: Joins all elements of an array into a string.
+- `split()` method: Splits a string into an array of substrings.
+- Sorting methods (`sort()`, `reverse()`): Mutates the original array.
+  - `sort((a, b) => a - b)` sorts numbers in ascending order.
+  - `sort((a, b) => b - a)` sorts numbers in descending order.
+
+#### Loop in Array
+
+- forEach(), for...of loops, and map() are commonly used when you want to execute a function for each item in an array:
+
+```js
+const array = [1, 2, 3, 4, 5];
+for (let i = 0; i < array.length; i++) {
+  console.log(array[i]); //for each item in array log to console
+}
+// Or using for...of loop
+for (const value of array) {
+  console.log(value); //for each item in array log to console
+}
+
+//  Using forEach() method
+const array = [1, 2, 3, 4, 5];
+array.forEach((item) => {
+  console.log(item); //for each item in array log to console
+});
+
+// Using map() method
+const array = [1, 2, 3, 4, 5];
+const doubledArray = array.map((item) => item * 2);
+```
+
+#### Using map()
+
+- to transform each item and return a new array
+
+```js
+const array = [1, 2, 3, 4, 5];
+const newArray = array.map((item) => item * 2);
+```
+
+#### Using filter()
+
+- to create a new array with elements that satisfy a condition
+
+```js
+const array = [1, 2, 3, 4, 5];
+const filteredArray = array.filter((item) => item % 2 === 0);
+```
+
+#### Using reduce()
+
+- to accumulate a single value from the array
+
+```js
+const array = [1, 2, 3, 4, 5];
+const sum = array.reduce(
+  (accumulator, currentValue) => accumulator + currentValue,
+  0
+);
 ```

@@ -65,3 +65,60 @@
 // function greet() {
 //     console.log('Hello!');
 // };
+
+// Example of a function with a callback
+// function doSomethingAsync(callback) {
+//     setTimeout(function() {
+//         console.log("Task completed asynchronously");
+//         // Invoke the callback function
+//         callback();
+//     }, 2000);
+// }
+
+// // Define the callback function
+// function callbackFunction() {
+//     console.log("Callback function executed");
+// }
+
+// // Call the function with the callback
+// doSomethingAsync(callbackFunction);
+
+// Error Handeling
+// try {
+//     // Attempting to parse an invalid JSON string
+//     const invalidJSON = '{ "name": "John", age: 30 }';
+//     const parsedData = JSON.parse(invalidJSON);
+//     console.log(parsedData);
+// } catch (error) {
+//     // Handling the error
+//     console.error('An error occurred while parsing JSON:', error.message);
+// } finally {
+//     // Optional: Code that will always execute, regardless of whether an error occurred or not
+//     console.log('Finally block executed');
+// }
+
+// document.getElementById('myList').addEventListener('click', function(event) {
+//     console.log(event.target.tagName)//'LI'
+//     console.log(event.target.textContent)//Item .
+//     if (event.target.tagName === 'LI') {
+//         console.log('Clicked on:', event.target.textContent);
+//     }
+// });
+
+fetch("https://jsonplaceholder.typicode.com/users")
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((users) => {
+    const userDataDiv = document.getElementById("userData");
+    users.forEach((user) => {
+      userDataDiv.innerHTML += `<p>User name: ${user.name}</p>`;
+    });
+    // Process the fetched data here
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });
