@@ -330,3 +330,265 @@ fetch("https://jsonplaceholder.typicode.com/users")
     console.error("Error fetching data:", error);
   });
 ```
+
+## Difference Between Asynchronous and Synchronous Programming
+
+#### Synchronous Programming:
+
+- Tasks are executed one after the other, in sequence.
+- Each task waits for the previous one to complete.
+- Blocking behavior: If a task takes a long time, it blocks subsequent tasks.
+- Example: Traditional procedural programming languages like C.
+
+#### Asynchronous Programming:
+
+- Tasks can execute concurrently or independently of each other.
+- Tasks can start and complete independently, without waiting for others to finish.
+- Non-blocking behavior: If a task takes a long time, the program can continue executing other tasks.
+- Example: JavaScript, where asynchronous operations like fetching data or reading files are common.
+
+## Creating and Manipulating Arrays in JavaScript
+
+### Creating Arrays:
+
+```javascript
+const array1 = [1, 2, 3]; // Array literal
+const array2 = new Array(4, 5, 6); // Array constructor
+```
+
+```js
+const fruits = ["apple", "banana", "orange"];
+
+// Add elements
+fruits.push("grape");
+
+// Remove elements
+fruits.pop();
+fruits.shift();
+
+// Modify elements
+fruits[1] = "pear";
+
+console.log(fruits); // Output: ['banana', 'pear']
+```
+
+## Array
+
+- `length` property: The number of elements in an array. Read only.
+- `indexOf()` method: Returns the first index at which a given element appears in an array. It returns -1 if the element is not
+- `lastIndexOf()` method: Returns the last index at which a given element appears in an array.
+
+- `includes()` method: Determines whether an array contains a specified element.
+- `concat()` method: Combines two or more arrays.
+- `join()` method: Joins all elements of an array into a string.
+- `split()` method: Splits a string into an array of substrings.
+- Sorting methods (`sort()`, `reverse()`): Mutates the original array.
+  - `sort((a, b) => a - b)` sorts numbers in ascending order.
+  - `sort((a, b) => b - a)` sorts numbers in descending order.
+
+#### Loop in Array
+
+- forEach(), for...of loops, and map() are commonly used when you want to execute a function for each item in an array:
+
+```js
+const array = [1, 2, 3, 4, 5];
+for (let i = 0; i < array.length; i++) {
+  console.log(array[i]); //for each item in array log to console
+}
+// Or using for...of loop
+for (const value of array) {
+  console.log(value); //for each item in array log to console
+}
+
+//  Using forEach() method
+const array = [1, 2, 3, 4, 5];
+array.forEach((item) => {
+  console.log(item); //for each item in array log to console
+});
+
+// Using map() method
+const array = [1, 2, 3, 4, 5];
+const doubledArray = array.map((item) => item * 2);
+```
+
+#### Using map()
+
+- The map() method creates a new array by applying a function to each element of the original array.
+- It does not modify the original array; instead, it returns a new array with the results of applying the function to each element.
+- The length of the new array is the same as the original array.
+- Useful for transforming each element of an array into something else.
+
+```js
+const numbers = [1, 2, 3, 4];
+const doubledNumbers = numbers.map((num) => num * 2);
+console.log(doubledNumbers); // Output: [2, 4, 6, 8]
+```
+
+#### Using filter()
+
+- he filter() method creates a new array with all elements that pass a test implemented by the provided function.
+- It does not modify the original array; instead, it returns a new array with elements that satisfy the condition.
+- The length of the new array may be different from the original array, depending on the number of elements that pass the test.
+- Useful for filtering out elements based on a condition.
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+const evenNumbers = numbers.filter((num) => num % 2 === 0);
+console.log(evenNumbers); // Output: [2, 4]
+```
+
+#### Using reduce()
+
+- The reduce() method executes a reducer function on each element of the array, resulting in a single output value.
+- It does not modify the original array; instead, it returns a single value that is the result of the reduction.
+- The reducer function takes four arguments: accumulator, currentValue, currentIndex, and array.
+- The accumulator stores the accumulated value, which is returned in the end.
+- Useful for aggregating values or performing calculations on array elements.
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce(
+  (accumulator, currentValue) => accumulator + currentValue,
+  0
+);
+console.log(sum); // Output: 15 (1 + 2 + 3 + 4 + 5)
+```
+
+## Lexical this Binding in Arrow Functions:
+
+- Arrow functions do not have their own `this` context.
+- Instead, they inherit the `this` value from the enclosing lexical context, which is the context in which the arrow function is defined.
+- This means that the value of `this` inside an arrow function is determined by the value of `this` in the surrounding code where the arrow function is declared.
+- Arrow functions do not bind their own `this` context, so they always retain the `this` value of the enclosing scope.
+- This behavior makes arrow functions particularly useful when working with callbacks, event handlers, or methods defined within objects, where the context of `this` needs to be preserved.
+
+### Dynamic this Binding in Regular Functions:
+
+- Regular functions, on the other hand, have their own `this` context.
+- The value of `this` inside a regular function is determined dynamically based on how the function is called.
+- The value of `this` can change depending on the context in which the function is invoked.
+- It can be explicitly set using methods like `call()`, `apply()`, or `bind()`, or it can be implicitly determined by the object on which the function is called (in the case of object methods).
+- The value of `this` in regular functions can be unpredictable and may lead to unexpected behavior, especially in complex or nested function calls.
+
+#### Example:
+
+```javascript
+const obj = {
+  name: "John",
+  greetArrow: () => {
+    console.log(`Hello, ${this.name}!`);
+  },
+  greetRegular: function () {
+    console.log(`Hello, ${this.name}!`);
+  },
+};
+
+obj.greetArrow(); // Output: "Hello, undefined!"
+obj.greetRegular(); // Output: "Hello, John!"
+```
+
+### Regular Function vs Arrow Function
+
+```js
+// Arrow function
+const greet = (name) => `Hello, ${name}!`;
+
+// Regular function
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+```
+
+### Arrow Functino vs Regular Function
+
+```js
+// Arrow function with rest parameters
+const sum = (...args) => {
+  let total = 0;
+  for (let arg of args) {
+    total += arg;
+  }
+  return total;
+};
+
+console.log(sum(1, 2, 3)); // Output: 6
+
+// Regular function accessing arguments object
+function product() {
+  let result = 1;
+  for (let i = 0; i < arguments.length; i++) {
+    result *= arguments[i];
+  }
+  return result;
+}
+
+console.log(product(2, 3, 4)); // Output: 24
+```
+
+## Lexical Scope
+
+- Lexical scope refers to the set of rules used by the JavaScript engine to determine where variables and functions are accessible within the code based on its physical structure.
+
+```js
+// Lexical Scope Example
+function outerFunction() {
+  const outerVariable = "I am in the outer function";
+
+  function innerFunction() {
+    console.log(outerVariable); // Access outerVariable from the outer scope
+  }
+
+  innerFunction(); // Call inner function
+}
+
+outerFunction(); // Call outer function
+```
+
+## Closure
+
+- A closure is a function that retains access to variables from its parent scope even after the parent function has finished executing.
+
+```js
+// Closure Example
+function createCounter() {
+  let count = 0; // Variable count is within the scope of createCounter
+
+  return function () {
+    return count++; // Inner function retains access to count via closure
+  };
+}
+
+const counter = createCounter(); // Create a counter function
+console.log(counter()); // Output: 0
+console.log(counter()); // Output: 1
+console.log(counter()); // Output: 2
+console.log(counter()); // Output: 3
+console.log(counter()); // Output: 4
+```
+
+## Event Loop
+
+- How Does the Event Loop Work?
+
+### Call Stack:
+
+- JavaScript code execution starts with the call stack, a data structure tracking function calls.
+- Functions are added to the stack when called and removed when completed.
+
+### Asynchronous Tasks:
+
+- Asynchronous tasks like setTimeout, DOM events, AJAX requests are handled separately.
+- They're offloaded to Web APIs and processed outside the main thread.
+- After completion, corresponding events are placed in the event queue.
+
+### Event Queue:
+
+- The event queue holds tasks ready to be processed by the JavaScript runtime.
+- The event loop continuously monitors the call stack and the event queue.
+
+### Event Loop:
+
+- A continuous process running in the background.
+- If the call stack is empty, it checks the event queue for pending tasks.
+- Tasks in the event queue are moved to the call stack for execution.
+
