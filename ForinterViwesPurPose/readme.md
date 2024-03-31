@@ -591,3 +591,66 @@ console.log(counter()); // Output: 4
 - A continuous process running in the background.
 - If the call stack is empty, it checks the event queue for pending tasks.
 - Tasks in the event queue are moved to the call stack for execution.
+
+## Work with JSON data in JavaScript
+
+### Parsing JSON Data:
+
+#### Example
+
+```js
+const jsonString = '{"name": "John", "age": 30}';
+const jsonObject = JSON.parse(jsonString);
+console.log(jsonObject.name); // Output: John
+console.log(jsonObject.age); // Output: 30
+```
+
+### Serializing JavaScript Objects to JSON
+
+#### Example
+
+```js
+const obj = { name: "John", age: 30 };
+const jsonString = JSON.stringify(obj);
+console.log(jsonString); // Output: {"name":"John","age":30}
+```
+
+### Accessing JSON Properties
+
+- Once parsed, you can access properties of the JavaScript object as usual.
+
+#### Example
+
+```js
+const jsonObject = JSON.parse('{"name": "John", "age": 30}');
+console.log(jsonObject.name); // Output: John
+console.log(jsonObject.age); // Output: 30
+```
+
+### Iterating Over JSON Objects
+
+- Iterate over properties of a JSON object using for...in loop or Object.keys(), Object.values(), or Object.entries() methods.
+
+#### Example
+
+```js
+const jsonObject = JSON.parse('{"name": "John", "age": 30}');
+for (const key in jsonObject) {
+  console.log(`${key}: ${jsonObject[key]}`);
+}
+```
+
+### Handling Errors:
+
+- When parsing JSON strings, handle errors using try...catch to handle invalid JSON data.
+
+#### Example
+
+```js
+try {
+  const jsonObject = JSON.parse("invalid json");
+  console.log(jsonObject);
+} catch (error) {
+  console.error("Error parsing JSON:", error.message);
+}
+```
