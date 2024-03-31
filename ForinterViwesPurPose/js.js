@@ -105,20 +105,38 @@
 //     }
 // });
 
-fetch("https://jsonplaceholder.typicode.com/users")
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  })
-  .then((users) => {
-    const userDataDiv = document.getElementById("userData");
-    users.forEach((user) => {
-      userDataDiv.innerHTML += `<p>User name: ${user.name}</p>`;
-    });
-    // Process the fetched data here
-  })
-  .catch((error) => {
-    console.error("Error fetching data:", error);
-  });
+// fetch("https://jsonplaceholder.typicode.com/users")
+//   .then((response) => {
+//     if (!response.ok) {
+//       throw new Error("Network response was not ok");
+//     }
+//     return response.json();
+//   })
+//   .then((users) => {
+//     const userDataDiv = document.getElementById("userData");
+//     users.forEach((user) => {
+//       userDataDiv.innerHTML += `<p>User name: ${user.name}</p>`;
+//     });
+//     // Process the fetched data here
+//   })
+//   .catch((error) => {
+//     console.error("Error fetching data:", error);
+//   });
+
+
+// Closure Example
+function createCounter() {
+    let count = 0; // Variable count is within the scope of createCounter
+  
+    return function() {
+      return count++; // Inner function retains access to count via closure
+    };
+  }
+  
+  const counter = createCounter(); // Create a counter function
+  console.log(counter()); // Output: 0
+  console.log(counter()); // Output: 1
+  console.log(counter()); // Output: 2
+  console.log(counter()); // Output: 3
+  console.log(counter()); // Output: 4
+  

@@ -413,30 +413,181 @@ const doubledArray = array.map((item) => item * 2);
 
 #### Using map()
 
-- to transform each item and return a new array
+- The map() method creates a new array by applying a function to each element of the original array.
+- It does not modify the original array; instead, it returns a new array with the results of applying the function to each element.
+- The length of the new array is the same as the original array.
+- Useful for transforming each element of an array into something else.
 
 ```js
-const array = [1, 2, 3, 4, 5];
-const newArray = array.map((item) => item * 2);
+const numbers = [1, 2, 3, 4];
+const doubledNumbers = numbers.map((num) => num * 2);
+console.log(doubledNumbers); // Output: [2, 4, 6, 8]
 ```
 
 #### Using filter()
 
-- to create a new array with elements that satisfy a condition
+- he filter() method creates a new array with all elements that pass a test implemented by the provided function.
+- It does not modify the original array; instead, it returns a new array with elements that satisfy the condition.
+- The length of the new array may be different from the original array, depending on the number of elements that pass the test.
+- Useful for filtering out elements based on a condition.
 
 ```js
-const array = [1, 2, 3, 4, 5];
-const filteredArray = array.filter((item) => item % 2 === 0);
+const numbers = [1, 2, 3, 4, 5];
+const evenNumbers = numbers.filter((num) => num % 2 === 0);
+console.log(evenNumbers); // Output: [2, 4]
 ```
 
 #### Using reduce()
 
-- to accumulate a single value from the array
+- The reduce() method executes a reducer function on each element of the array, resulting in a single output value.
+- It does not modify the original array; instead, it returns a single value that is the result of the reduction.
+- The reducer function takes four arguments: accumulator, currentValue, currentIndex, and array.
+- The accumulator stores the accumulated value, which is returned in the end.
+- Useful for aggregating values or performing calculations on array elements.
 
 ```js
-const array = [1, 2, 3, 4, 5];
-const sum = array.reduce(
+const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce(
   (accumulator, currentValue) => accumulator + currentValue,
   0
 );
+console.log(sum); // Output: 15 (1 + 2 + 3 + 4 + 5)
 ```
+
+## Lexical this Binding in Arrow Functions:
+
+- Arrow functions do not have their own `this` context.
+- Instead, they inherit the `this` value from the enclosing lexical context, which is the context in which the arrow function is defined.
+- This means that the value of `this` inside an arrow function is determined by the value of `this` in the surrounding code where the arrow function is declared.
+- Arrow functions do not bind their own `this` context, so they always retain the `this` value of the enclosing scope.
+- This behavior makes arrow functions particularly useful when working with callbacks, event handlers, or methods defined within objects, where the context of `this` needs to be preserved.
+
+### Dynamic this Binding in Regular Functions:
+
+- Regular functions, on the other hand, have their own `this` context.
+- The value of `this` inside a regular function is determined dynamically based on how the function is called.
+- The value of `this` can change depending on the context in which the function is invoked.
+- It can be explicitly set using methods like `call()`, `apply()`, or `bind()`, or it can be implicitly determined by the object on which the function is called (in the case of object methods).
+- The value of `this` in regular functions can be unpredictable and may lead to unexpected behavior, especially in complex or nested function calls.
+
+#### Example:
+
+```javascript
+const obj = {
+  name: "John",
+  greetArrow: () => {
+    console.log(`Hello, ${this.name}!`);
+  },
+  greetRegular: function () {
+    console.log(`Hello, ${this.name}!`);
+  },
+};
+
+obj.greetArrow(); // Output: "Hello, undefined!"
+obj.greetRegular(); // Output: "Hello, John!"
+```
+
+### Regular Function vs Arrow Function
+
+```js
+// Arrow function
+const greet = (name) => `Hello, ${name}!`;
+
+// Regular function
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+```
+
+### Arrow Functino vs Regular Function
+
+```js
+// Arrow function with rest parameters
+const sum = (...args) => {
+  let total = 0;
+  for (let arg of args) {
+    total += arg;
+  }
+  return total;
+};
+
+console.log(sum(1, 2, 3)); // Output: 6
+
+// Regular function accessing arguments object
+function product() {
+  let result = 1;
+  for (let i = 0; i < arguments.length; i++) {
+    result *= arguments[i];
+  }
+  return result;
+}
+
+console.log(product(2, 3, 4)); // Output: 24
+```
+
+## Lexical Scope
+
+- Lexical scope refers to the set of rules used by the JavaScript engine to determine where variables and functions are accessible within the code based on its physical structure.
+
+```js
+// Lexical Scope Example
+function outerFunction() {
+  const outerVariable = "I am in the outer function";
+
+  function innerFunction() {
+    console.log(outerVariable); // Access outerVariable from the outer scope
+  }
+
+  innerFunction(); // Call inner function
+}
+
+outerFunction(); // Call outer function
+```
+
+## Closure
+
+- A closure is a function that retains access to variables from its parent scope even after the parent function has finished executing.
+
+```js
+// Closure Example
+function createCounter() {
+  let count = 0; // Variable count is within the scope of createCounter
+
+  return function () {
+    return count++; // Inner function retains access to count via closure
+  };
+}
+
+const counter = createCounter(); // Create a counter function
+console.log(counter()); // Output: 0
+console.log(counter()); // Output: 1
+console.log(counter()); // Output: 2
+console.log(counter()); // Output: 3
+console.log(counter()); // Output: 4
+```
+
+## Event Loop
+
+- How Does the Event Loop Work?
+
+### Call Stack:
+
+- JavaScript code execution starts with the call stack, a data structure tracking function calls.
+- Functions are added to the stack when called and removed when completed.
+
+### Asynchronous Tasks:
+
+- Asynchronous tasks like setTimeout, DOM events, AJAX requests are handled separately.
+- They're offloaded to Web APIs and processed outside the main thread.
+- After completion, corresponding events are placed in the event queue.
+
+### Event Queue:
+
+- The event queue holds tasks ready to be processed by the JavaScript runtime.
+- The event loop continuously monitors the call stack and the event queue.
+
+### Event Loop:
+
+- A continuous process running in the background.
+- If the call stack is empty, it checks the event queue for pending tasks.
+- Tasks in the event queue are moved to the call stack for execution.
