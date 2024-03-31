@@ -675,3 +675,71 @@ let num = 0; // Variable assigned the numeric value 0
 
 console.log(10 / "apple"); // Output: NaN (attempting to divide by a non-numeric value)
 ```
+
+## Purpose of the arguments
+
+```js
+function sum() {
+  let total = 0;
+  for (let i = 0; i < arguments.length; i++) {
+    total += arguments[i];
+  }
+  return total;
+}
+console.log(sum(1, 2, 3)); // Output: 6
+```
+
+## Create and manipulate objects in JavaScript?
+
+- In JavaScript, objects are a fundamental data type used to store collections of key-value pairs. Here's how you can create and manipulate objects:
+
+#### Example
+
+```js
+// Object creation using object literal notation
+const person1 = {
+  name: "John",
+  age: 30,
+  city: "New York",
+};
+
+// Object creation using constructor function
+function Person(name, age, city) {
+  this.name = name;
+  this.age = age;
+  this.city = city;
+}
+
+const person2 = new Person("Jane", 25, "Los Angeles");
+
+// Object creation using Object.create()
+const personPrototype = {
+  greet: function () {
+    console.log("Hello!");
+  },
+};
+
+const person3 = Object.create(personPrototype);
+
+// Accessing and modifying properties
+console.log(person1.name); // Output: John
+person1.age = 35;
+
+// Adding and deleting properties
+person1.job = "Developer";
+delete person1.city;
+
+// Iterating over object properties
+for (const key in person2) {
+  console.log(`${key}: ${person2[key]}`);
+}
+
+// Object.keys(), Object.values(), Object.entries()
+const keys = Object.keys(person3);
+const values = Object.values(person3);
+const entries = Object.entries(person3);
+
+console.log(keys);
+console.log(values);
+console.log(entries);
+```

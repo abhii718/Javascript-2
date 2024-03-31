@@ -163,3 +163,49 @@
 //   } catch (error) {
 //     console.error('Error parsing JSON:', error.message);
 //   }
+
+// function sum() {
+//   let total = 0;
+//   for (let i = 0; i < arguments.length; i++) {
+//     total += arguments[i];
+//   }
+//   return total;
+// }
+// console.log(sum(1, 2, 3)); // Output: 6
+
+// Creating an object using object literal
+const person = {
+    name: "John",
+    age: 30,
+    greet: function() {
+      console.log("Hello, " + this.name + "!");
+    }
+  };
+  
+  // Accessing object properties
+  console.log(person.name); // Output: John
+  console.log(person["age"]); // Output: 30
+  
+  // Adding a new property
+  person.city = "New York";
+  
+  // Modifying a property
+  person.age = 35;
+  
+  // Deleting a property
+  delete person.age;
+  
+  // Calling a method
+  person.greet(); // Output: Hello, John!
+  
+  console.log(person.age)
+
+  // Iterating over object properties
+const keys = Object.keys(person);
+console.log(keys); // Output: ["name", "age", "greet", "city"]
+
+// Merging objects
+const additionalInfo = { job: "Developer" };
+const mergedObject = Object.assign({}, person, additionalInfo);
+console.log(mergedObject);
+
