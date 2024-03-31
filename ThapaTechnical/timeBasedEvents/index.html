@@ -98,17 +98,17 @@
     </div>
 
     <script>
-      let a;
       const currentTime = () => {
-        a = setInterval(() => {
-          let curTime = new Date().toLocaleTimeString();
-          document.getElementById("clock").innerText = curTime;
-        }, 1000);
+        let curTime = new Date().toLocaleTimeString();
+        document.getElementById("clock").innerText = curTime;
       };
       currentTime();
-      setTimeout(() => {
-        clearInterval(a);
-      }, 5000);
+
+      const intervalId = setInterval(() => {
+        currentTime();
+      }, 1000);
+
+      setTimeout(() => clearInterval(intervalId), 5000);
     </script>
   </body>
 </html>

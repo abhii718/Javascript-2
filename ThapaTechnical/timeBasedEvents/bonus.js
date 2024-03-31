@@ -1,5 +1,3 @@
-//todo NOTE 👉🥹  I am really sorry bcz of time limit I need to delete this part from JS part 2. But I will add this in part 3 for sure ok
-
 //* call, apply, and bind are methods available in JavaScript for managing the this value of a function.
 //! all 3 methods are only used in function not in object
 

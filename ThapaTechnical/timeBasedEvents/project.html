@@ -19,51 +19,61 @@
       <div class="resetValue"></div>
     </section>
     <script>
-      function getElement(selector) {
-        return document.querySelector(selector);
-      }
-
-      var startCount = 0;
+      const countDownElement = document.getElementById("countDown");
+      const resetValueElement = document.querySelector(".resetValue");
+      let startCount = 0;
       let intervalId;
-      function startTimer() {
+
+      // Function to start the timer
+      const startTimer = () => {
         intervalId = setInterval(() => {
           countDownElement.innerText = startCount++;
         }, 1000);
-      }
+      };
 
-      function stopTimer() {
+      // Function to stop the timer and show stop time
+      const stopTimer = () => {
+        showStopValue();
         clearInterval(intervalId);
-      }
+      };
 
-      function resetTimer() {
+      // Function to reset the timer
+      const resetTimer = () => {
         startCount = 0;
         countDownElement.innerText = startCount;
         clearInterval(intervalId);
-      }
-
-      const showStopValue = () => {
-        const newPara = document.createElement("p")
-        newPara.innerText = `The stop time is ${startCount -1}`
-        resetValue.append(newPara)
       };
 
-      const clearTimeValue= ()=>{
-        resetValue.innerText = "";
-      }
+      // Function to show stop value
+      const showStopValue = () => {
+        const newPara = document.createElement("p");
+        newPara.innerText = `The stop time is ${startCount - 1}`;
+        resetValueElement.append(newPara);
+      };
 
-      var countDownElement = getElement("#countDown");
-      var startButton = getElement(".start_btn");
-      var resetButton = getElement(".reset_btn");
-      var stopButton = getElement(".stop_btn");
-      var timeButton = getElement(".time_btn");
-      var clearButton = getElement(".clear_btn");
-      var resetValue = getElement(".resetValue");
+      // Function to show stop time
+      const clearTimeValue = () => {
+        resetValueElement.innerHTML = "";
+      };
 
-      startButton.addEventListener("click", startTimer);
-      stopButton.addEventListener("click", stopTimer);
-      resetButton.addEventListener("click", resetTimer);
-      timeButton.addEventListener("click", showStopValue);
-      clearButton.addEventListener("click", clearTimeValue);
+      // Event listeners
+      document
+        .querySelector(".start_btn")
+        .addEventListener("click", startTimer);
+
+      document
+        .querySelector(".reset_btn")
+        .addEventListener("click", resetTimer);
+
+      document.querySelector(".stop_btn").addEventListener("click", stopTimer);
+
+      document
+        .querySelector(".time_btn")
+        .addEventListener("click", showStopValue);
+
+      document
+        .querySelector(".clear_btn")
+        .addEventListener("click", clearTimeValue);
     </script>
   </body>
 </html>
