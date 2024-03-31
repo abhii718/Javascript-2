@@ -654,3 +654,24 @@ try {
   console.error("Error parsing JSON:", error.message);
 }
 ```
+
+## Null, undefined, NaN, and 0
+
+- null represents the intentional absence of any object value. It is often used to indicate that a variable or object property has no value or that a function deliberately returns no value.
+
+- undefined indicates a variable that has been declared but has not been assigned a value. It is also the default value for uninitialized variables and the return value of functions that do not explicitly return a value.
+
+- 0 is a numeric value representing the number zero. It is a falsy value in JavaScript, meaning it is considered false in Boolean contexts.
+
+- NaN represents a value that is "not a number." It is returned when a mathematical operation cannot produce a meaningful result, such as dividing by zero or attempting to perform arithmetic with non-numeric values.
+
+```js
+let variable = null; // Variable intentionally set to null
+
+let variable; // Variable declared but not assigned a value (implicitly undefined)
+console.log(variable); // Output: undefined
+
+let num = 0; // Variable assigned the numeric value 0
+
+console.log(10 / "apple"); // Output: NaN (attempting to divide by a non-numeric value)
+```

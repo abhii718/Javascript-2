@@ -123,20 +123,43 @@
 //     console.error("Error fetching data:", error);
 //   });
 
-
 // Closure Example
-function createCounter() {
-    let count = 0; // Variable count is within the scope of createCounter
-  
-    return function() {
-      return count++; // Inner function retains access to count via closure
-    };
-  }
-  
-  const counter = createCounter(); // Create a counter function
-  console.log(counter()); // Output: 0
-  console.log(counter()); // Output: 1
-  console.log(counter()); // Output: 2
-  console.log(counter()); // Output: 3
-  console.log(counter()); // Output: 4
-  
+// function createCounter() {
+//     let count = 0; // Variable count is within the scope of createCounter
+
+//     return function() {
+//       return count++; // Inner function retains access to count via closure
+//     };
+//   }
+
+//   const counter = createCounter(); // Create a counter function
+//   console.log(counter()); // Output: 0
+//   console.log(counter()); // Output: 1
+//   console.log(counter()); // Output: 2
+//   console.log(counter()); // Output: 3
+//   console.log(counter()); // Output: 4
+
+// 25. How do you work with JSON data in JavaScript?
+// const jsonString = '{"name": "John", "age": 30}';
+// const jsonObject = JSON.parse(jsonString);
+// console.log(jsonObject.name); // Output: John
+// console.log(jsonObject.age); // Output: 30
+
+// const obj = { name: "John", age: 30 };
+// const jsonString1 = JSON.stringify(obj);
+// console.log(jsonString1); // Output: {"name":"John","age":30}
+
+//acessing data
+// const jsonObject = JSON.parse('{"name": "John", "age": 30}');
+// console.log(jsonObject.name); // Output: John
+// console.log(jsonObject.age); // Output: 30
+
+// for (const key in jsonObject) {
+//   console.log(`${key}: ${jsonObject[key]}`)
+// }
+// try {
+//     const jsonObject = JSON.parse('{"name": "John", "age": 30}');
+//     console.log(jsonObject);
+//   } catch (error) {
+//     console.error('Error parsing JSON:', error.message);
+//   }
