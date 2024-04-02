@@ -80,27 +80,6 @@ const person = {
 console.log(person.fullName()); // Output: John Doe
 ```
 
-## Understanding the `this` Keyword in JavaScript
-
-In JavaScript, the `this` keyword is a special identifier that refers to the execution context of a function. It plays a crucial role in determining how functions behave and interact with objects and contexts. Below are some of the main use cases of the `this` keyword:
-
-### 1. Method Invocation
-
-When a function is invoked as a method of an object, `this` refers to the object itself. This allows methods to access and manipulate the properties of the object they are called on.
-
-#### Example
-
-```javascript
-const person = {
-  name: "John",
-  greet: function () {
-    console.log("Hello, " + this.name);
-  },
-};
-
-person.greet(); // Output: Hello, John
-```
-
 ## ProtoTypes
 
 #### Example
