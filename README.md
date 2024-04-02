@@ -592,7 +592,6 @@ console.log(counter()); // Output: 4
 - If the call stack is empty, it checks the event queue for pending tasks.
 - Tasks in the event queue are moved to the call stack for execution.
 
-
 ## Work with JSON data in JavaScript
 
 ### Parsing JSON Data:
