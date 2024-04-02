@@ -22,7 +22,7 @@ JavaScript is a high-level, interpreted programming language primarily used for 
 - `==` performs type coercion, while `===` is the strict equality operator.
   - Example: `0 == false` is true, but `0 === false` is false.
 
-## Null vs Undefined:
+## `Null` vs `Undefined`:
 
 - null represents intentional absence of value.
 - undefined indicates lack of defined value.
