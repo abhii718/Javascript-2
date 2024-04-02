@@ -745,3 +745,309 @@ console.log(values);
 console.log(entries);
 ```
 
+## Object destructuring in JavaScript? Provide an example.
+
+- Object destructuring in JavaScript is a convenient way to extract multiple properties from an object and assign them to variables in a single expression. It allows you to unpack values from objects into distinct variables, making code cleaner and more concise.
+
+```js
+// Object with properties
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 30,
+  city: "New York",
+};
+
+// Destructuring assignment
+const { firstName, lastName, age, city } = person;
+
+// Using the extracted variables
+console.log(firstName); // Output: John
+console.log(lastName); // Output: Doe
+console.log(age); // Output: 30
+console.log(city); // Output: New York
+```
+
+## Rest parameters and spread operator in JavaScript
+
+### Rest Parameters
+
+- Rest parameters allow you to represent an indefinite number of arguments as an array within a function parameter list.
+- They are used when you want to pass a variable number of arguments to a function.
+- Rest parameters are prefixed with three dots (...) followed by the parameter name.
+
+#### Example:
+
+```js
+function sum(...numbers) {
+  return numbers.reduce((total, num) => total + num, 0);
+}
+
+console.log(sum(1, 2, 3, 4)); // Output: 10
+```
+
+### Spread Syntax
+
+- Spread syntax allows an iterable (like an array or string) to be expanded into individual elements.
+- It is used when you want to spread elements of an array (or any iterable) into another array, function call, or object literal.
+- Spread syntax is also prefixed with three dots (...), but it is used in contexts other than function parameters.
+
+#### Example:
+
+```js
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+
+const combinedArray = [...arr1, ...arr2]; // Spread arrays into a new array
+console.log(combinedArray); // Output: [1, 2, 3, 4, 5, 6]
+
+const maxNumber = Math.max(...arr1); // Spread elements into a function call
+console.log(maxNumber); // Output: 3
+```
+
+### Handle asynchronous operations in JavaScript
+
+**In JavaScript, there are several techniques for handling asynchronous operations to ensure that certain tasks are executed only after others have completed. Here are some common approaches:**
+
+**Callbacks**: Callback functions are a traditional way to handle asynchronous operations in JavaScript. You pass a function as an argument to another function, and that function is called once the asynchronous task is complete.
+
+#### Example
+
+```js
+function fetchData(callback) {
+  setTimeout(() => {
+    callback("Data fetched");
+  }, 1000);
+}
+
+fetchData((data) => {
+  console.log(data);
+});
+```
+
+**Promises**: Promises provide a cleaner and more flexible way to handle asynchronous code compared to callbacks. A Promise represents a value that may be available now, or in the future, or never.
+
+#### Example
+
+```js
+async function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Data fetched");
+    }, 1000);
+  });
+}
+
+async function getData() {
+  try {
+    const data = await fetchData();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+getData();
+```
+
+**Async/Await**: Async functions enable you to write asynchronous code as if it were synchronous. You can use the async keyword to define a function that returns a Promise, and the await keyword to wait for the Promise to resolve.
+
+#### Example
+
+```js
+async function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Data fetched");
+    }, 1000);
+  });
+}
+
+async function getData() {
+  try {
+    const data = await fetchData();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+getData();
+```
+
+**Event Emitters**:
+
+- Event-driven programming is another way to handle asynchronous operations in JavaScript. You can use event emitters to subscribe to events and execute code when those events occur.
+
+#### Example
+
+```js
+const EventEmitter = require("events");
+const emitter = new EventEmitter();
+
+emitter.on("data", (data) => {
+  console.log(data);
+});
+
+setTimeout(() => {
+  emitter.emit("data", "Data fetched");
+}, 1000);
+```
+
+## Difference between setTimeout() and setInterval() function
+
+The `setInterval()` and `setTimeout()` functions in JavaScript are both used to execute code asynchronously after a specified delay. However, they have different behaviors:
+
+### `setInterval()`
+
+- The `setInterval()` function is used to execute a function or evaluate an expression repeatedly, with a fixed time interval between each execution.
+- It accepts two arguments: a callback function or a code snippet to execute, and a time interval value (in milliseconds).
+- The callback function is executed repeatedly at the specified time interval, regardless of how long the previous execution took.
+- Example:
+
+  ```javascript
+  setInterval(() => {
+    console.log("This will be executed every 1000 milliseconds");
+  }, 1000);
+  ```
+
+### `setTimeout()`
+
+The `setTimeout()` function is used to execute a function or evaluate an expression once, after a specified delay (in milliseconds).
+
+- It accepts two arguments: a callback function or a code snippet to execute, and a delay value (in milliseconds).
+- After the specified delay, the callback function is added to the event queue and executed when the call stack is empty.
+
+**Example:**
+
+```javascript
+setTimeout(() => {
+  console.log("This will be executed once after 2000 milliseconds");
+}, 2000);
+```
+
+## Currying in JavaScript
+
+Currying is a functional programming technique in JavaScript where a function with multiple arguments is transformed into a sequence of functions, each taking only one argument. This allows for partial application of the function, where some arguments are provided upfront and the rest can be supplied later.
+
+### Transforming Multi-argument Functions
+
+Currying involves transforming a function with multiple arguments into a series of nested functions, each taking one argument.
+
+### Partial Application
+
+Curried functions allow for partial application, enabling the provision of some arguments upfront and obtaining a new function that expects the remaining arguments. This promotes flexibility and reusability.
+
+#### Example
+
+```javascript
+// Regular function with multiple arguments
+function add(x, y) {
+  return x + y;
+}
+
+// Curried version
+function addCurried(x) {
+  return function (y) {
+    return x + y;
+  };
+}
+
+// Usage
+const add5 = addCurried(5); // Partial application
+console.log(add5(3)); // Output: 8
+```
+
+#### Another Example
+
+```js
+function getSum(a) {
+  return function (b) {
+    return function (c) {
+      return function (d) {
+        return function (e) {
+          console.log(a + b + c + d + e);
+        };
+      };
+    };
+  };
+}
+
+getSum(5)(4)(3)(2)(1); // Output: 15
+
+// In arrow function
+const getSum = (a) => (b) => (c) => (d) => (e) => {
+  console.log(a + b + c + d + e);
+};
+
+getSum(5)(4)(3)(2)(1); // Output: 15
+// Output: "54321"
+```
+
+## Convert a string to a number in JavaScript
+
+In JavaScript, you can convert a string to a number using various methods. Here are a few common approaches:
+
+**Using the `parseInt()` Function**: This function parses a string and returns an integer. You can specify the radix (base) of the numeral system to be used for parsing. If the radix is not specified, JavaScript assumes base 10.
+
+```javascript
+const str = "123";
+const num = parseInt(str); // Converts "123" to 123
+```
+
+**Using the `parseFloat()` Function**: Similar to parseInt(), but it parses a string and returns a floating-point number.
+
+```js
+const str = "3.14";
+const num = parseFloat(str); // Converts "3.14" to 3.14
+```
+
+**Using the `Number()` Constructor**: You can use the Number() constructor to convert a string to a number. It converts the argument to a number, either a signed or unsigned integer, or a floating-point number.
+
+```js
+const str = "42";
+const num = Number(str); // Converts "42" to 42
+```
+
+**Using the Unary Plus `Operator(+)`**: Applying the unary plus operator to a string attempts to convert it to a number. This is a concise way to achieve the conversion, but it behaves differently for empty strings or non-numeric strings (e.g., "abc").
+
+```js
+const str = "99";
+const num = +str; // Converts "99" to 99
+```
+
+## Template literals in JavaScript
+
+- Template literals allow for embedded expressions and multiline strings without concatenation.
+
+#### Example:
+
+```js
+const name = "John";
+const greeting = `Hello, ${name}!`;
+console.log(greeting); // Output: Hello, John!
+```
+
+- Embedded expressions are enclosed in `${}` and can be variables or any valid JavaScript expression.
+
+## Symbol
+
+In JavaScript, `symbol()` is a primitive data type introduced in ECMAScript 2015 (ES6). They are immutable and unique values that can be used as property keys in objects to ensure their uniqueness and prevent naming collisions. Symbols are created using the Symbol() function, optionally with a description.
+
+#### Example
+
+```js
+const sym = Symbol();
+const sym1 = Symbol("description");
+const sym2 = Symbol("description");
+console.log(sym1 === sym2); // false
+const obj = {};
+obj[sym1] = "value 1";
+obj[sym2] = "value 2";
+console.log(obj[sym1]); // value 1
+console.log(obj[sym2]); // value 2
+console.log(Object.keys(obj)); // []
+for (const key in obj) {
+  console.log(key);
+}
+```
