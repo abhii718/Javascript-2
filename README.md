@@ -411,9 +411,9 @@ const array = [1, 2, 3, 4, 5];
 const doubledArray = array.map((item) => item * 2);
 ```
 
-#### Using map()
+#### Using `map()`
 
-- The map() method creates a new array by applying a function to each element of the original array.
+- The `map()` method creates a new array by applying a function to each element of the original array.
 - It does not modify the original array; instead, it returns a new array with the results of applying the function to each element.
 - The length of the new array is the same as the original array.
 - Useful for transforming each element of an array into something else.
@@ -424,9 +424,9 @@ const doubledNumbers = numbers.map((num) => num * 2);
 console.log(doubledNumbers); // Output: [2, 4, 6, 8]
 ```
 
-#### Using filter()
+#### Using `filter()`
 
-- he filter() method creates a new array with all elements that pass a test implemented by the provided function.
+- The `filter()` method creates a new array with all elements that pass a test implemented by the provided function.
 - It does not modify the original array; instead, it returns a new array with elements that satisfy the condition.
 - The length of the new array may be different from the original array, depending on the number of elements that pass the test.
 - Useful for filtering out elements based on a condition.
@@ -437,9 +437,9 @@ const evenNumbers = numbers.filter((num) => num % 2 === 0);
 console.log(evenNumbers); // Output: [2, 4]
 ```
 
-#### Using reduce()
+#### Using `reduce()`
 
-- The reduce() method executes a reducer function on each element of the array, resulting in a single output value.
+- The `reduce()` method executes a reducer function on each element of the array, resulting in a single output value.
 - It does not modify the original array; instead, it returns a single value that is the result of the reduction.
 - The reducer function takes four arguments: accumulator, currentValue, currentIndex, and array.
 - The accumulator stores the accumulated value, which is returned in the end.
@@ -629,7 +629,7 @@ console.log(jsonObject.age); // Output: 30
 
 ### Iterating Over JSON Objects
 
-- Iterate over properties of a JSON object using for...in loop or Object.keys(), Object.values(), or Object.entries() methods.
+- Iterate over properties of a JSON object using for...in loop or `Object.keys()`, `Object.values()`, or `Object.entries()` methods.
 
 #### Example
 
@@ -893,7 +893,7 @@ setTimeout(() => {
 }, 1000);
 ```
 
-## Difference between setTimeout() and setInterval() function
+## Difference between `setTimeout()` and `setInterval()` function
 
 The `setInterval()` and `setTimeout()` functions in JavaScript are both used to execute code asynchronously after a specified delay. However, they have different behaviors:
 
