@@ -592,3 +592,156 @@ console.log(counter()); // Output: 4
 - If the call stack is empty, it checks the event queue for pending tasks.
 - Tasks in the event queue are moved to the call stack for execution.
 
+
+## Work with JSON data in JavaScript
+
+### Parsing JSON Data:
+
+#### Example
+
+```js
+const jsonString = '{"name": "John", "age": 30}';
+const jsonObject = JSON.parse(jsonString);
+console.log(jsonObject.name); // Output: John
+console.log(jsonObject.age); // Output: 30
+```
+
+### Serializing JavaScript Objects to JSON
+
+#### Example
+
+```js
+const obj = { name: "John", age: 30 };
+const jsonString = JSON.stringify(obj);
+console.log(jsonString); // Output: {"name":"John","age":30}
+```
+
+### Accessing JSON Properties
+
+- Once parsed, you can access properties of the JavaScript object as usual.
+
+#### Example
+
+```js
+const jsonObject = JSON.parse('{"name": "John", "age": 30}');
+console.log(jsonObject.name); // Output: John
+console.log(jsonObject.age); // Output: 30
+```
+
+### Iterating Over JSON Objects
+
+- Iterate over properties of a JSON object using for...in loop or Object.keys(), Object.values(), or Object.entries() methods.
+
+#### Example
+
+```js
+const jsonObject = JSON.parse('{"name": "John", "age": 30}');
+for (const key in jsonObject) {
+  console.log(`${key}: ${jsonObject[key]}`);
+}
+```
+
+### Handling Errors:
+
+- When parsing JSON strings, handle errors using try...catch to handle invalid JSON data.
+
+#### Example
+
+```js
+try {
+  const jsonObject = JSON.parse("invalid json");
+  console.log(jsonObject);
+} catch (error) {
+  console.error("Error parsing JSON:", error.message);
+}
+```
+
+## Null, undefined, NaN, and 0
+
+- null represents the intentional absence of any object value. It is often used to indicate that a variable or object property has no value or that a function deliberately returns no value.
+
+- undefined indicates a variable that has been declared but has not been assigned a value. It is also the default value for uninitialized variables and the return value of functions that do not explicitly return a value.
+
+- 0 is a numeric value representing the number zero. It is a falsy value in JavaScript, meaning it is considered false in Boolean contexts.
+
+- NaN represents a value that is "not a number." It is returned when a mathematical operation cannot produce a meaningful result, such as dividing by zero or attempting to perform arithmetic with non-numeric values.
+
+```js
+let variable = null; // Variable intentionally set to null
+
+let variable; // Variable declared but not assigned a value (implicitly undefined)
+console.log(variable); // Output: undefined
+
+let num = 0; // Variable assigned the numeric value 0
+
+console.log(10 / "apple"); // Output: NaN (attempting to divide by a non-numeric value)
+```
+
+## Purpose of the arguments
+
+```js
+function sum() {
+  let total = 0;
+  for (let i = 0; i < arguments.length; i++) {
+    total += arguments[i];
+  }
+  return total;
+}
+console.log(sum(1, 2, 3)); // Output: 6
+```
+
+## Create and manipulate objects in JavaScript?
+
+- In JavaScript, objects are a fundamental data type used to store collections of key-value pairs. Here's how you can create and manipulate objects:
+
+#### Example
+
+```js
+// Object creation using object literal notation
+const person1 = {
+  name: "John",
+  age: 30,
+  city: "New York",
+};
+
+// Object creation using constructor function
+function Person(name, age, city) {
+  this.name = name;
+  this.age = age;
+  this.city = city;
+}
+
+const person2 = new Person("Jane", 25, "Los Angeles");
+
+// Object creation using Object.create()
+const personPrototype = {
+  greet: function () {
+    console.log("Hello!");
+  },
+};
+
+const person3 = Object.create(personPrototype);
+
+// Accessing and modifying properties
+console.log(person1.name); // Output: John
+person1.age = 35;
+
+// Adding and deleting properties
+person1.job = "Developer";
+delete person1.city;
+
+// Iterating over object properties
+for (const key in person2) {
+  console.log(`${key}: ${person2[key]}`);
+}
+
+// Object.keys(), Object.values(), Object.entries()
+const keys = Object.keys(person3);
+const values = Object.values(person3);
+const entries = Object.entries(person3);
+
+console.log(keys);
+console.log(values);
+console.log(entries);
+```
+
