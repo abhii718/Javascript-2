@@ -1029,3 +1029,483 @@ for (const key in obj) {
   console.log(key);
 }
 ```
+
+## `Date()` object
+
+### Creating Date Object
+
+A date object is created using the following syntax:
+
+- The new keyword is used to create an instance of a class called Date. The constructor takes optional arguments for year, month, day, hour
+  The new keyword is used to create an instance of a class called Date. If no argument is passed to this constructor, it creates a new Date
+
+```js
+const currentDate = new Date();
+const year = currentDate.getFullYear();
+const month = currentDate.getMonth(); // Note: January is 0, February is 1, ...
+const day = currentDate.getDate();
+const hour = currentDate.getHours();
+const minute = currentDate.getMinutes();
+const second = currentDate.getSeconds();
+const millisecond = currentDate.getMilliseconds();
+```
+
+### Formatting Dates:
+
+- Formatting Dates: You can format dates into strings using methods like `toDateString()`, `toLocaleDateString()`, `toTimeString()`, `toLocaleTimeString()`, `toISOString()`, or by using libraries like moment.js or date-fns.
+
+```js
+const dateString = currentDate.toDateString();
+const timeString = currentDate.toTimeString();
+```
+
+### Performing Date Arithmetic
+
+- Performing Date Arithmetic: You can perform arithmetic operations on dates by adding or subtracting milliseconds from a Date object.
+
+```js
+const tomorrow = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000);
+```
+
+### Comparing Dates
+
+- Comparing Dates: You can compare dates using comparison operators (<, >, ===, etc.) or by converting them to milliseconds using the getTime() method.
+
+```js
+const date1 = new Date("2024-04-03");
+const date2 = new Date("2024-04-04");
+if (date1 < date2) {
+  console.log("date1 is before date2");
+}
+```
+
+## Iterating Over Objects in JavaScript
+
+```javascript
+const obj = {
+  he: 1,
+  she: 2,
+  they: 3,
+  4: "abhii singh",
+  5: "abhinav singh",
+};
+
+for (let key in obj) {
+  console.log(key, obj[key]);
+}
+
+Object.keys(obj).forEach((key) => {
+  console.log(key, obj[key]);
+});
+
+Object.values(obj).forEach((value) => {
+  console.log(value);
+});
+
+Object.entries(obj).forEach(([key, value]) => {
+  console.log(key, value);
+});
+
+Object.entries(obj).forEach(([key, value]) => {
+  console.log(key, value);
+});
+
+// Output
+
+//  he 1
+// she 2
+// they 3
+// he 1
+// she 2
+// they 3
+// 1
+// 2
+// 3
+// he 1
+// she 2
+// they 3
+// he 1
+// she 2
+// they 3
+```
+
+## Generators
+
+- Generators in JavaScript are special types of functions that can be paused and resumed. They are defined using the function\* syntax and utilize the yield keyword to pause their execution and produce a sequence of values lazily. Generators provide an easy way to implement iterators and asynchronous programming patterns.
+
+```js
+// Define a generator function
+function* countDown(from) {
+  while (from > 0) {
+    yield from; // Pause execution and yield the current value
+    from--; // Decrement the value
+  }
+}
+
+// Create a generator object
+const generator = countDown(5);
+
+// Iterate over the generator using a for...of loop
+for (const value of generator) {
+  console.log(value); // Output: 5, 4, 3, 2, 1
+}
+
+// Create another generator object
+const anotherGenerator = countDown(3);
+
+// Manually iterate over the generator using the next() method
+console.log(anotherGenerator.next().value); // Output: 3
+console.log(anotherGenerator.next().value); // Output: 2
+console.log(anotherGenerator.next().value); // Output: 1
+console.log(anotherGenerator.next().value); // Output: undefined
+```
+
+## Modules
+
+- Modules in JavaScript are essentially reusable pieces of code that encapsulate related functionality and can be exported from one file and imported into another. They help in organizing code, improving maintainability, and reducing namespace collisions.
+
+```js
+// module1.js
+export const greeting = "Hello";
+export function sayHello(name) {
+  return `${greeting}, ${name}!`;
+}
+
+// module2.js
+import { greeting, sayHello } from "./module1.js";
+
+// Using imported function
+console.log(sayHello("John")); // Output: Hello, John!
+```
+
+## Array
+
+- An array in JavaScript is a data structure used to store multiple values in a single variable. It is a collection of elements, each identified by an index or key. Arrays can contain elements of any data type, including numbers, strings, objects, functions, and even other arrays.
+
+### Creating an Array
+
+```js
+// Empty array
+const emptyArray = [];
+
+// Array with elements
+const numbers = [1, 2, 3, 4, 5];
+const fruits = ["apple", "banana", "orange"];
+
+// Mixed data type array
+const mixedArray = [1, "apple", true, { name: "John" }];
+```
+
+### Accessing Array Elements
+
+```js
+const fruits = ["apple", "banana", "orange"];
+
+console.log(fruits[0]); // Output: apple
+console.log(fruits[1]); // Output: banana
+console.log(fruits[2]); // Output: orange
+```
+
+### Modifying Array Elements
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+
+numbers[2] = 10; // Modify element at index 2
+console.log(numbers); // Output: [1, 2, 10, 4, 5]
+```
+
+### Adding and Removing Elements:
+
+- `push()`: Adds one or more elements to the end of an array.
+- `pop()`: Removes the last element from an array and returns it.
+- `unshift()`: Adds one or more elements to the beginning of an array.
+- `shift()`: Removes the first element from an array and returns it.
+
+### Manipulating Array Elements:
+
+- `splice()`: Adds or removes elements from an array at a specified index.
+- `slice()`: Returns a shallow copy of a portion of an array into a new array.
+
+### Iterating Over Arrays:
+
+- `forEach()`: Executes a provided function once for each array element.
+- `map()`: Creates a new array populated with the results of calling a provided function on every element in the calling array.
+
+### Searching and Filtering:
+
+- `indexOf()`: Returns the first index at which a given element can be found in the array.
+- `includes()`: Determines whether an array includes a certain value.
+- `filter()`: Creates a new array with all elements that pass the test implemented by the provided function.
+
+### Combining and Flattening Arrays:
+
+- `concat()`: Combines two or more arrays.
+- `flat()`: Creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+
+#### Example
+
+```js
+// Define an array
+let numbers = [1, 2, 3, 4, 5];
+
+// Adding elements to the end of the array
+numbers.push(6, 7);
+
+// Removing the last element from the array
+const lastElement = numbers.pop();
+
+// Adding elements to the beginning of the array
+numbers.unshift(0);
+
+// Removing the first element from the array
+const firstElement = numbers.shift();
+
+// Manipulating array elements using splice() and slice() methods
+const removedElements = numbers.splice(2, 2); // Removes elements starting from index 2
+const newArray = numbers.slice(1, 4); // Returns elements from index 1 to 3 (end index is exclusive)
+
+// Iterating over array elements using forEach() and map() methods
+numbers.forEach((number, index) => {
+  console.log(`Element at index ${index}: ${number}`);
+});
+
+const squaredNumbers = numbers.map((number) => number * number);
+
+// Searching and filtering array elements using indexOf(), includes(), and filter() methods
+const index = numbers.indexOf(3); // Returns the index of the element '3' in the array
+const includesValue = numbers.includes(5); // Returns true if '5' is present in the array
+const evenNumbers = numbers.filter((number) => number % 2 === 0); // Filters out even numbers from the array
+
+// Combining arrays using concat() method
+const moreNumbers = [8, 9, 10];
+const combinedArray = numbers.concat(moreNumbers);
+
+// Flattening arrays using flat() method
+const nestedArray = [
+  [1, 2],
+  [3, 4],
+  [5, 6],
+];
+const flattenedArray = nestedArray.flat();
+
+console.log(numbers); // Updated array after all operations
+console.log(lastElement); // Last element removed from the array
+console.log(firstElement); // First element removed from the array
+console.log(removedElements); // Elements removed using splice() method
+console.log(newArray); // New array created using slice() method
+console.log(squaredNumbers); // New array with squared numbers
+console.log(index); // Index of '3' in the array
+console.log(includesValue); // Whether '5' is present in the array
+console.log(evenNumbers); // Filtered array with even numbers
+console.log(combinedArray); // Combined array
+console.log(flattenedArray); // Flattened array
+```
+
+## Events
+
+- Event: An object that represents an event happening in a system.
+  javascript uses events to trigger actions or functionality when certain conditions are met within a program. These can be user
+  javascript uses events to trigger actions when certain things happen within a program or external entities like user interactions on web
+
+```js
+// Select the button and paragraph elements
+const button = document.getElementById("myButton");
+const paragraph = document.getElementById("myParagraph");
+
+// Add event listener for click event on the button
+button.addEventListener("click", function (event) {
+  // Change the text content of the paragraph
+  paragraph.textContent = "Text Changed!";
+});
+```
+
+## ECMAScript 2015 (ES6)
+
+- ES6, also known as ECMAScript 2015, introduced several new features and improvements to JavaScript, enhancing its syntax and capabilities. Some of the key features introduced in ES6 include:
+
+### Arrow Functions
+
+```js
+// ES5 function
+function add(x, y) {
+  return x + y;
+}
+
+// ES6 arrow function
+const add = (x, y) => x + y;
+```
+
+### `let` and `const` Declarations
+
+```js
+let x = 10; // Mutable variable
+const PI = 3.14; // Immutable constant
+```
+
+### Template Literals
+
+```js
+const name = "John";
+console.log(`Hello, ${name}!`);
+```
+
+### Destructuring Assignment
+
+```js
+const [x, y] = [1, 2];
+const { name, age } = { name: "John", age: 30 };
+```
+
+### Default Parameters:
+
+```js
+function greet(name = "World") {
+  console.log(`Hello, ${name}!`);
+}
+```
+
+### Rest Parameters
+
+```js
+function sum(...numbers) {
+  return numbers.reduce((acc, curr) => acc + curr, 0);
+}
+```
+
+### Spread Operator
+
+```js
+function sum(...numbers) {
+  return numbers.reduce((acc, curr) => acc + curr, 0);
+}
+```
+
+### Class Syntax
+
+```js
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+```
+
+### Modules
+
+```js
+// export.js
+export const PI = 3.14;
+export function square(x) {
+  return x * x;
+}
+
+// import.js
+import { PI, square } from "./export.js";
+```
+
+## Handling Asynchronous Code
+
+### Promises
+
+```js
+// Example: Fetching data from an API using promises
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    // Simulating an asynchronous operation (e.g., API request)
+    setTimeout(() => {
+      const data = { id: 1, name: "John" };
+      // Resolve the promise with the fetched data
+      resolve(data);
+    }, 1000);
+  });
+}
+
+// Using the fetchData function with promises
+fetchData()
+  .then((data) => {
+    console.log("Data fetched:", data);
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });
+```
+
+### Async/await
+
+```js
+// Example: Fetching data from an API using async/await
+async function fetchData() {
+  // Simulating an asynchronous operation (e.g., API request)
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const data = { id: 1, name: "John" };
+      // Resolve the promise with the fetched data
+      resolve(data);
+    }, 1000);
+  });
+}
+
+// Using the fetchData function with async/await
+async function getData() {
+  try {
+    const data = await fetchData();
+    console.log("Data fetched:", data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+// Call the getData function
+getData();
+```
+
+## Purpose of bind(), call(), and apply() Methods in JavaScript
+
+In JavaScript, the `bind()`, `call()`, and `apply()` methods are used to manipulate the context (the value of `this` keyword) and arguments of a function during its execution. They serve different purposes and are commonly used in various programming scenarios:
+
+### **`bind()` Method**:
+
+- The `bind()` method creates a new function that, when called, has its `this` keyword set to a specified value, with a given sequence of arguments preceding any provided when the new function is called.
+- It allows you to permanently bind a function to a specific context (object) without invoking it immediately.
+- The `bind()` method does not invoke the function; it returns a new function with the specified context.
+
+```javascript
+const obj = { name: "John" };
+
+function sayName() {
+  console.log(this.name);
+}
+
+const boundFunction = sayName.bind(obj);
+boundFunction(); // Output: John
+```
+
+### **`call()` Method**:
+
+- The `call()` method invokes a function with a specified `this` value and allows passing arguments individually (comma-separated). It immediately invokes the function with the specified context and arguments.
+- Suppose we have an object `obj` with a `name` property and a function `sayName()` that logs a greeting along with the object's name:
+
+```javascript
+const obj = { name: "John" };
+
+function sayName(greeting) {
+  console.log(`${greeting}, ${this.name}`);
+}
+```
+
+### **`apply()` Method**:
+
+- The `apply()` method in JavaScript is used to immediately invoke a function with a specified context (`this` value) and arguments provided as an array or an array-like object. It is similar to the `call()` method but accepts arguments as an array instead of individually.
+
+```javascript
+const obj = { name: "John" };
+
+function sayName(greeting) {
+  console.log(`${greeting}, ${this.name}`);
+}
+
+// Using apply() to invoke sayName function with obj as context and arguments provided as an array
+sayName.apply(obj, ["Hello"]); // Output: Hello, John
+```
