@@ -161,7 +161,7 @@ const myFunction = function() {
 };
 ```
 
-## Declaring Functions in JavaScript and Different Ways to Define a Function
+## Different Ways to Define a Function
 
 #### Example
 
