@@ -267,8 +267,11 @@ try {
 
 ```js
 document.getElementById("myList").addEventListener("click", function (event) {
+
   console.log(event.target.tagName); //'LI'
+
   console.log(event.target.textContent); //Item .
+
   if (event.target.tagName === "LI") {
     console.log("Clicked on:", event.target.textContent);
   }
