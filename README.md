@@ -294,10 +294,7 @@ fetch("https://jsonplaceholder.typicode.com/users")
   })
   .then((users) => {
     const userDataDiv = document.getElementById("userData");
-    users.forEach((user) => {
-      userDataDiv.innerHTML += `<p>User name: ${user.name}</p>`;
-    });
-    // Process the fetched data here
+    userDataDiv.innerHTML = users.map(user => `<p>User name: ${user.name}</p>`).join('');
   })
   .catch((error) => {
     console.error("Error fetching data:", error);
@@ -312,6 +309,28 @@ fetch("https://jsonplaceholder.typicode.com/users")
 - Each task waits for the previous one to complete.
 - Blocking behavior: If a task takes a long time, it blocks subsequent tasks.
 - Example: Traditional procedural programming languages like C.
+
+  ```javascript
+  //Synchronous Programming 
+  console.log("Task 1");
+  console.log("Task 2");
+  console.log("Task 3");
+  ```
+
+  
+
+  ```javascript
+  //Asynchronous Programming
+  
+   console.log("Task 1");
+
+  setTimeout(() => {
+    console.log("Task 2 (Async)");
+  }, 2000);
+
+  console.log("Task 3");
+  ```
+
 
 #### Asynchronous Programming:
 
