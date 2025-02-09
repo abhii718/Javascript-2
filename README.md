@@ -30,23 +30,25 @@ JavaScript is a high-level, interpreted programming language primarily used for 
 
 ## Closure in JavaScript:
 
-A closure is a combination of a function and the lexical environment within which that function was declared. This allows the function to retain access to variables from its containing scope even after the scope has closed. Essentially, a closure allows a function to maintain access to the variables of its parent function even after the parent function has finished executing.
+A closure in JavaScript is a feature where an inner function retains access to variables in its outer (enclosing) function's scope even after the outer function has finished executing.
 
 #### Example:
 
 ```javascript
-function outerFunction() {
-  let outerVariable = "I am from outer function";
+function createCounter() {
+  let count = 0; // `count` is a private variable
 
-  function innerFunction() {
-    console.log(outerVariable);
-  }
-
-  return innerFunction;
+  // The inner function is a closure that captures `count`
+  return function() {
+    count += 1;
+    return count;
+  };
 }
 
-const closureExample = outerFunction();
-closureExample(); // Output: I am from outer function
+const counter = createCounter();
+
+console.log(counter()); // Output: 1
+console.log(counter()); // Output: 2
 ```
 
 ## Hoisting in JavaScript:
@@ -59,7 +61,13 @@ Hoisting is a JavaScript mechanism where variables and function declarations are
 console.log(x); // Output: undefined
 var x = 5;
 ```
+```javascript
+sayHello(); // Works fine
 
+function sayHello() {
+  console.log("Hello!");
+}
+```
 ## Purpose of the `this` Keyword in JavaScript:
 
 In JavaScript, the `this` keyword refers to the object that is currently executing the code. The value of `this` is determined by how a function is called, rather than where the function is declared. It allows functions to operate on different contexts based on how they are invoked.
