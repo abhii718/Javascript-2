@@ -90,42 +90,26 @@ console.log(person.fullName()); // Output: John Doe
 
 ## ProtoTypes
 
+In JavaScript, every object has a prototype, which is like a blueprint or a parent object. This prototype contains properties and methods that can be shared among all objects created from it.
+
 #### Example
 
 ```javascript
-//prototypes
 let a = {
-  aname: "abhi",
-  language: "Javascript",
-  run: () => {
-    alert("self run");
-  },
+function Person(name) {
+  this.name = name;
+}
+
+// Adding a method to the prototype
+Person.prototype.sayHello = function() {
+  console.log("Hello, my name is " + this.name);
 };
 
-console.log(a);
+const user1 = new Person("Abhi");
+const user2 = new Person("John");
 
-let p = {
-  run: () => {
-    alert("running");
-  },
-};
-
-p.__proto__ = {
-  name: "abhii",
-};
-
-a.__proto__ = p;
-// a.run()
-console.log(a.name);
-
-// a.toLocaleString
-// ƒ toLocaleString() { [native code] }
-// a.toString()
-// '[object Object]'
-// a.valueOf
-// ƒ valueOf() { [native code] }
-// a.valueOf()
-// {aname: 'abhi', language: 'Javascript'}
+user1.sayHello(); // Output: Hello, my name is Abhi
+user2.sayHello(); // Output: Hello, my name is John
 ```
 
 ## Difference between `let`, `const`, and `var` in JavaScript
