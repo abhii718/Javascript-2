@@ -140,26 +140,25 @@ console.log(z); // Output: 10
 
 ## Function declaration vs function expression:
 
+A function declaration defines a function with a given name using the function keyword. It is a standalone statement.
+
 #### Example
 
 ```javascript
-// Function expression assigned to a const variable
-// function greet() {
-//     console.log('Hello!');
-// };
-// Calling the function
-greet(); // Output: Hello!'
+//Funtion Declaration
 function greet() {
   console.log("Hello!");
 }
+```
+A function expression creates a function and assigns it to a variable (or property). Function expressions can be named or anonymous.
 
-// Another function expression assigned to a const variable
-const sayBye = function () {
-  console.log("Goodbye!");
+#### Example
+
+```javascript
+//funtion Expression
+const myFunction = function() {
+  // function body
 };
-
-// Calling the function
-sayBye(); // Output: Goodbye!
 ```
 
 ## Declaring Functions in JavaScript and Different Ways to Define a Function
