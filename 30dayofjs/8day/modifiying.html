@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="title">Hello, World!</h1>
+    <button class="btn">Click Me</button>
+    <button class="btn2">Click Me</button>
+
+    <script>
+      const title = document.getElementById("title");
+      const button = document.querySelector(".btn");
+      const button2 = document.getElementsByClassName(".btn2"); // Fix: Select the second button properly
+
+      // Modify text content
+      title.textContent = "Hello, JavaScript!";
+
+      // Modify styles
+      title.style.color = "blue";
+      title.style.fontSize = "24px";
+
+      // Modify attributes
+      title.setAttribute("class", "heading");
+
+      // Corrected event listener for first button
+      button.addEventListener("click", function () {
+        alert("Button Clicked!");
+      });
+
+      // Corrected event listener for second button
+      document.querySelector(".btn2").addEventListener("click", function () {
+        alert("Second Button Clicked!");
+      });
+
+      // Fix: Use alert() instead of prompt() in the mouseover event
+      title.addEventListener("mouseover", function () {
+        alert("You hovered over the title!");
+      });
+    </script>
+  </body>
+</html>

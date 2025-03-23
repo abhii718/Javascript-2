@@ -211,20 +211,170 @@
 
 // Create a new Date object with the desired date
 
-const hello = () => {
-  var date = new Date(2024, 10, 3);
-  var day = date.getDate();
-  var month = date.getMonth() + 1;
-  var year = date.getFullYear();
-  var formattedDate =
-    (month < 10 ? "0" : "") +
-    month +
-    "/" +
-    (day < 10 ? "0" : "") +
-    day +
-    "/" +
-    year;
-  console.log(formattedDate);
+// const hello = () => {
+//   var date = new Date();
+//   var day = date.getDate();
+//   var month = date.getMonth() + 1;
+//   var year = date.getFullYear();
+//   var formattedDate =
+//     (month < 10 ? "0" : "") +
+//     month +
+//     "/" +
+//     (day < 10 ? "0" : "") +
+//     day +
+//     "/" +
+//     year;
+//   console.log(formattedDate);
+// };
+// let hi = hello();
+// console.log("hi world");
+
+// function declaration
+
+// function sum(a, b) {
+// let c = a + b;
+// console.log(c)
+// return a + b;
+// }
+
+// const sum = (a, b) => {
+//   return a + b;
+// };
+// // let d = sum(2, 6);
+// console.log(sum(2,6))
+
+// Regular function using arguments
+// function regularFunction() {
+//   console.log(arguments); // Output the arguments object
+// }
+
+// regularFunction(1, 2, 3); // Output: [1, 2, 3]
+
+// Arrow function accessing arguments from the enclosing scope
+// const arrowFunction = () => {
+//   console.log(arguments); // Output the arguments object from the enclosing scope
+// }
+
+// arrowFunction(1, 2, 3); // Output: [1, 2, 3]
+
+// sum = (...numbers) => {
+//   return numbers.reduce((total, num) => total + num, 0);
+// };
+
+// function sum(...arg) {
+//   let a = arg.reduce((total, num) => num + total + num);
+//   let b = arg.reduce((total, num) => num + total + total);
+//   console.log(a, b) // output 19 26
+// }
+
+// (sum(1, 2, 3, 4));
+
+// Callbacks
+// function fetchData(callback) {
+//   setTimeout(() => {
+//     callback("Data fetched");
+//   }, 1000);
+// }
+
+// fetchData((data) => {
+//   console.log(data);
+// });
+
+// promises
+// async function fetchData() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve("Data fetched");
+//     }, 1000);
+//   });
+// }
+
+// async function getData() {
+//   try {
+//     const data = await fetchData();
+//     console.log(data);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+// getData();
+
+// const sym = Symbol();
+// const sym1 = Symbol("description");
+// const sym2 = Symbol("description");
+// console.log(sym1 === sym2); // false
+// const obj = {};
+// obj[sym1] = "value 1";
+// obj[sym2] = "value 2";
+// console.log(obj[sym1]); // value 1
+// console.log(obj[sym2]); // value 2
+// console.log(Object.keys(obj)); // []
+// for (const key in obj) {
+//   console.log(key);
+// }
+// function* numberGenerator() {
+//   yield 1;
+//   yield 2;
+//   yield 3;
+// }
+
+// // Using the generator to iterate over the generated values
+// const generator = numberGenerator();
+// console.log(generator.next().value); // Output: 1
+// console.log(generator.next().value); // Output: 2
+// console.log(generator.next().value); // Output: 3
+// console.log(generator.next().value); // Output: 3
+
+// const obj = { a: 1, b: 2, c: 3 };
+// for (let key in obj) {
+//   console.log(key, obj[key]);
+// }
+
+// const obj = { a: 1, b: 2, c: 3 };
+// Object.keys(obj).forEach(key => {
+//   console.log(key, obj[key]);
+// });
+
+// const obj = { a: 1, b: 2, c: 3 };
+// Object.values(obj).forEach(value => {
+//   console.log(value);
+// });
+
+// const obj = { a: 1, b: 2, c: 3 };
+// Object.entries(obj).forEach(([key, value]) => {
+//   console.log(key, value);
+// });
+
+// const obj = { a: 1, b: 2, c: 3 };
+// Object.entries(obj).forEach(([key, value]) => {
+//   console.log(key, value);
+// });
+
+const obj = {
+    he: 1,
+    she: 2,
+    they: 3,
+  4: "abhii singh",
+  5: "abhinav singh",
 };
-let hi = hello();
-console.log("hi world");
+
+for (let key in obj) {
+  console.log(key, obj[key]);
+}
+
+Object.keys(obj).forEach((key) => {
+  console.log(key, obj[key]);
+});
+
+Object.values(obj).forEach((value) => {
+  console.log(value);
+});
+
+Object.entries(obj).forEach(([key, value]) => {
+  console.log(key, value);
+});
+
+Object.entries(obj).forEach(([key, value]) => {
+  console.log(key, value);
+});

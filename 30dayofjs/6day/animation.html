@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animation Frame</title>
+</head>
+<body>
+    <div id="box" style="width: 50px; height: 50px; background: red; position: absolute; border-radius: 50%;"></div>
+
+    <script>
+      let position = 0;
+      const box = document.getElementById("box");
+    
+      function animate() {
+        position += 10;
+        box.style.left = position + "px";
+    
+        if (position < 1000) {
+          requestAnimationFrame(animate);
+        }
+      }
+    
+      requestAnimationFrame(animate);
+    </script>
+    
+</body>
+</html>

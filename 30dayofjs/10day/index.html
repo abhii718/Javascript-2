@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Fetch with Loading & Error Handling</title>
+    <style>
+      #data-container {
+        border: 1px solid black;
+        padding: 10px;
+        margin-top: 10px;
+        width: fit-content;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>API Data</h1>
+    <button id="fetch-data">Fetch Data</button>
+    <p id="output"></p>
+    <div id="data-container"></div>
+    <!-- Container for API data -->
+
+    <script>
+      document
+        .querySelector("#fetch-data")
+        .addEventListener("click", async function () {
+          const output = document.querySelector("#output");
+          output.textContent = "Loading..."; // Show loading message
+          const container = document.querySelector("#data-container");
+          container.innerHTML = ""; // Clear previous data
+
+          try {
+            for (let i = 1; i <= 3; i++) {
+              let url = `https://jsonplaceholder.typicode.com/posts/${i}`;
+              let response = await fetch(url);
+
+              if (!response.ok) throw new Error(`Failed to fetch post ${i}`);
+
+              const data = await response.json();
+              displayData(data);
+            }
+            output.textContent = ""; // Clear loading text after fetching all
+          } catch (error) {
+            output.textContent = "Error fetching data!";
+            console.error("Error:", error);
+          }
+        });
+
+      function displayData(data) {
+        const container = document.getElementById("data-container");
+        const postDiv = document.createElement("div");
+
+        postDiv.style.border = "1px solid black";
+        postDiv.style.padding = "10px";
+
+        Object.keys(data).forEach((key) => {
+          const p = document.createElement("p");
+          p.textContent = ` ${key} : ${data[key]}`;
+          postDiv.appendChild(p);
+        });
+        container.appendChild(postDiv)
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test API</title>
+  </head>
+  <body>
+    <h1>Test Express API</h1>
+
+    <button onclick="getUsers()">GET Users</button>
+    <button onclick="getUserById()">GET User by ID</button>
+    <button onclick="addUser()">POST User</button>
+    <button onclick="updateUser()">PUT User</button>
+    <button onclick="deleteUser()">DELETE User</button>
+
+    <pre id="output"></pre>
+
+    <script>
+      const apiUrl = "http://localhost:3000/users";
+
+      function getUsers() {
+        fetch(apiUrl)
+          .then((res) => res.json())
+          .then(
+            (data) =>
+              (document.getElementById("output").textContent = JSON.stringify(
+                data,
+                null,
+                2
+              ))
+          )
+          .catch((err) => console.error(err));
+      }
+
+      function getUserById() {
+        const userId = prompt("Enter user ID:");
+        fetch(`${apiUrl}/${userId}`)
+          .then((res) => res.json())
+          .then(
+            (data) =>
+              (document.getElementById("output").textContent = JSON.stringify(
+                data,
+                null,
+                2
+              ))
+          )
+          .catch((err) => console.error(err));
+      }
+
+      function addUser() {
+        const name = prompt("Enter name:");
+        const email = prompt("Enter email:");
+        fetch(apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email }),
+        })
+          .then((res) => res.json())
+          .then(
+            (data) =>
+              (document.getElementById("output").textContent = JSON.stringify(
+                data,
+                null,
+                2
+              ))
+          );
+      }
+
+      function updateUser() {
+        const userId = prompt("Enter user ID to update:");
+        const name = prompt("Enter new name:");
+        const email = prompt("Enter new email:");
+        fetch(`${apiUrl}/${userId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email }),
+        })
+          .then((res) => res.json())
+          .then(
+            (data) =>
+              (document.getElementById("output").textContent = JSON.stringify(
+                data,
+                null,
+                2
+              ))
+          );
+      }
+
+      function deleteUser() {
+        const userId = prompt("Enter user ID to delete:");
+        fetch(`${apiUrl}/${userId}`, { method: "DELETE" })
+          .then((res) => res.json())
+          .then(
+            (data) =>
+              (document.getElementById("output").textContent = JSON.stringify(
+                data,
+                null,
+                2
+              ))
+          );
+      }
+    </script>
+  </body>
+</html>

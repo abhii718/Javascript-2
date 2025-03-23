@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="search" placeholder="Search" />
+    <input type="text" id="searchInput" placeholder="Search..." />
+    <div id="results"></div>
+    <div id="resizeDiv"></div>
+
+    <div id="scrollDiv" style="height: 2000px; overflow-y: scroll">
+      <div
+        id="scrollInfo"
+        style="position: sticky; top: 0; background-color: lightgray"
+      ></div>
+      <p>Scroll down to see throttling in action.</p>
+      <p>...</p>
+    </div>
+
+    <div
+      id="mouseDiv"
+      style="width: 300px; height: 200px; border: 1px solid black"
+    >
+      <div id="mouseInfo"></div>
+    </div>
+    <input type="text" id="search-box" placeholder="Search..." />
+    <div id="result"></div>
+    <div style="height: 200vh; background: lightgray;">Scroll Down</div>
+
+  </body>
+  <script src="localStorage.js"></script>
+  <script src="sessionStorage.js"></script>
+  <script src="FetchApi.js"></script>
+  <script src="Debouncing.js"></script>
+  <script src="throttling.js"></script>
+</html>
